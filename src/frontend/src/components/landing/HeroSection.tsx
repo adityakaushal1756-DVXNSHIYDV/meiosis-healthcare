@@ -23,7 +23,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] flex items-center overflow-visible"
+      className="relative min-h-[85svh] flex items-center overflow-visible"
       style={{ zIndex: 1 }}
     >
       {/* Background radial gradients */}
@@ -33,7 +33,7 @@ export function HeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px]" />
       </div>
 
-      <div className="container mx-auto px-4 py-20 lg:py-32 relative z-10">
+      <div className="container mx-auto px-4 py-16 lg:py-24 relative z-10">
         <div className="max-w-2xl">
           {/* Currently Under Development tag */}
           <motion.div

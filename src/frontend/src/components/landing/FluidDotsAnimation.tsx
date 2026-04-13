@@ -262,6 +262,8 @@ export function FluidDotsAnimation() {
 
         for (const dot of ring) {
           const angle = dot.baseAngle + rotOff + dot.displace;
+          const lx = rx * Math.cos(angle);
+          const ly_raw = ry * Math.sin(angle);
 
           // 3D rotation around horizontal axis
           const cosV = Math.cos(vRot);
