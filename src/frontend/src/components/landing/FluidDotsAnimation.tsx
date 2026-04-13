@@ -107,6 +107,7 @@ const SCROLL_ROT_FACTOR = 0.0015;
 const ENTER_DURATION = 1200;
 const INITIAL_CENTER_X_RATIO = 0.95;
 const FINAL_CENTER_X_RATIO = 0.5;
+const SCROLL_THRESHOLD = 300; // pixels to scroll for full centering
 
 function easeOutCubic(t: number) {
   return 1 - Math.pow(1 - t, 3);
@@ -215,8 +216,8 @@ export function FluidDotsAnimation() {
       const breathe =
         1 + BREATHE_AMP * Math.sin(elapsed * BREATHE_SPEED * Math.PI * 2);
 
-      const enterProgress = Math.min(1, elapsed / ENTER_DURATION);
-      const enterEase = easeOutCubic(enterProgress);
+      const scrollProgress = Math.min(1, window.scrollY / SCROLL_THRESHOLD);
+      const enterEase = easeOutCubic(scrollProgress);
       const cx =
         w *
         (INITIAL_CENTER_X_RATIO +
@@ -240,8 +241,8 @@ export function FluidDotsAnimation() {
         const col = palette[ri];
         const baseDotR = DOT_RADII[ri];
 
-        // Effective tilt = per-ring tilt
-        const tiltRad = (def.tiltDeg * Math.PI) / 180;
+        // Effective tilt = per-ring tilt + alternating global rotation
+        const tiltRad = (def.tiltDeg * Math.PI) / 180 + globalRotation * 0.3 * (ri % 2 === 0 ? 1 : -1);
 
         const ryBase = def.ryBase * breathe;
         // Atom-style flat ellipse: semi-major = ryBase * H_STRETCH,
