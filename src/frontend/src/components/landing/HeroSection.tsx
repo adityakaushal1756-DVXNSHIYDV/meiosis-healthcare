@@ -33,8 +33,8 @@ export function HeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px]" />
       </div>
 
-      <div className="container mx-auto px-4 py-16 lg:py-20 relative z-10">
-        <div className="max-w-2xl">
+      <div className="container mx-auto px-4 py-16 lg:py-20 relative z-10 flex justify-center">
+        <div className="max-w-2xl text-center">
           {/* Currently Under Development tag */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -101,7 +101,7 @@ export function HeroSection() {
               delay: 0.32,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap gap-3 justify-center"
           >
             <a
               href={`${AUTH_URL}/signup`}
@@ -156,7 +156,7 @@ export function HeroSection() {
               delay: 0.5,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-10 flex gap-3"
+              className="mt-10 flex gap-3 justify-center"
           >
             {stats.map((stat, i) => (
               <motion.div

@@ -104,12 +104,10 @@ const BREATHE_AMP = 0.03;
 // ─── Scroll → global rotation ─────────────────────────────────────────────────
 // scrollY * SCROLL_ROT_FACTOR = radians of whole-animation rotation
 const SCROLL_ROT_FACTOR = 0.004;
-const SCROLL_SCALE_FACTOR = 0.0012;
 const INITIAL_CENTER_X_RATIO = 0.5;
 const FINAL_CENTER_X_RATIO = 0.5;
-const SCROLL_EXPAND_THRESHOLD = 800; // pixels to scroll for expansion
-const MAX_SCALE = 2.2; // max scale factor based on scroll
-const MIN_SCALE = 1.0; // min scale factor
+const PEAK_SCALE = 2.3; // max scale at middle of page
+const MIN_SCALE = 1.0; // min scale factor at start and end
 
 function easeOutCubic(t: number) {
   return 1 - Math.pow(1 - t, 3);
@@ -219,7 +217,13 @@ export function FluidDotsAnimation() {
         1 + BREATHE_AMP * Math.sin(elapsed * BREATHE_SPEED * Math.PI * 2);
 
       const scrollY = window.scrollY;
-      const scrollScale = Math.min(MAX_SCALE, 1 + (scrollY / SCROLL_EXPAND_THRESHOLD) * (MAX_SCALE - 1));
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollProgress = docHeight > 0 ? scrollY / docHeight : 0;
+      // Scale: expand to peak at 0.5 progress, then contract back
+      const scaleFactor = scrollProgress < 0.5 
+        ? 1 + (scrollProgress * 2) * (PEAK_SCALE - 1)
+        : 1 + ((1 - scrollProgress) * 2) * (PEAK_SCALE - 1);
+      const scrollScale = Math.max(MIN_SCALE, Math.min(PEAK_SCALE, scaleFactor));
       const cx = w / 2;
       const cy = h / 2;
 

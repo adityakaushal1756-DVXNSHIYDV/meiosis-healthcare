@@ -12,7 +12,7 @@ const techStack = [
 
 export function TechTrustBar() {
   return (
-    <section className="bg-muted/40 border-y border-border py-10">
+    <section className="bg-muted/40 backdrop-blur-xl border-y border-white/5 py-10\">
       <div className="container mx-auto px-4">
         <p className="text-center text-[11px] font-semibold tracking-widest uppercase text-muted-foreground mb-6">
           Powered by enterprise-grade technology

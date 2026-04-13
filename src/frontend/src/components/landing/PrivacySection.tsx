@@ -32,7 +32,7 @@ const privacyCards = [
 
 export function PrivacySection() {
   return (
-    <section id="privacy" className="py-24 bg-background">
+    <section id="privacy" className="py-24 bg-background/80 backdrop-blur-xl border-t border-white/5">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 36, scale: 0.97 }}
