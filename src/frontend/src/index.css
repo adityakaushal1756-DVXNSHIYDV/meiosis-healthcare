@@ -176,7 +176,7 @@
   }
 
   .section-header {
-    @apply text-center max-w-4xl mx-auto mb-14 md:mb-18 lg:mb-24;
+    @apply text-center max-w-4xl mx-auto mb-14 md:mb-20 lg:mb-24;
   }
 
   .section-title {
