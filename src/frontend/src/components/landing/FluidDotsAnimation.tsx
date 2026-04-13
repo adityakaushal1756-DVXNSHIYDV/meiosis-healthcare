@@ -104,6 +104,13 @@ const BREATHE_AMP = 0.03;
 // ─── Scroll → global rotation ─────────────────────────────────────────────────
 // scrollY * SCROLL_ROT_FACTOR = radians of whole-animation rotation
 const SCROLL_ROT_FACTOR = 0.0015;
+const ENTER_DURATION = 1200;
+const INITIAL_CENTER_X_RATIO = 0.86;
+const FINAL_CENTER_X_RATIO = 0.5;
+
+function easeOutCubic(t: number) {
+  return 1 - Math.pow(1 - t, 3);
+}
 
 // ─── Build ring dots ───────────────────────────────────────────────────────────
 function buildRings(): RingDot[][] {
@@ -134,7 +141,8 @@ export function FluidDotsAnimation() {
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const startRef = useRef<number>(0);
   const rotOffsets = useRef<number[]>(RING_DEFS.map(() => 0));
-  const scrollYRef = useRef<number>(
+  const globalRotationRef = useRef<number>(0);
+  const lastScrollYRef = useRef<number>(
     typeof window !== "undefined" ? window.scrollY : 0,
   );
   const { resolvedTheme } = useTheme();
@@ -165,7 +173,16 @@ export function FluidDotsAnimation() {
     }
 
     function onScroll() {
-      scrollYRef.current = window.scrollY;
+      const newY = window.scrollY;
+      const delta = newY - lastScrollYRef.current;
+
+      if (Math.abs(delta) > 0.5) {
+        const direction = Math.random() > 0.5 ? 1 : -1;
+        globalRotationRef.current += delta * SCROLL_ROT_FACTOR * direction;
+        globalRotationRef.current %= Math.PI * 2;
+      }
+
+      lastScrollYRef.current = newY;
     }
 
     resize();
@@ -190,8 +207,6 @@ export function FluidDotsAnimation() {
       const elapsed = ts - startRef.current;
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
-      const cx = w / 2;
-      const cy = h / 2;
 
       const isLight = themeRef.current === "light";
       const palette = isLight ? COLORS_LIGHT : COLORS_DARK;
@@ -201,8 +216,16 @@ export function FluidDotsAnimation() {
       const breathe =
         1 + BREATHE_AMP * Math.sin(elapsed * BREATHE_SPEED * Math.PI * 2);
 
-      // Global rotation driven by scroll position
-      const globalRotation = scrollYRef.current * SCROLL_ROT_FACTOR;
+      const enterProgress = Math.min(1, elapsed / ENTER_DURATION);
+      const enterEase = easeOutCubic(enterProgress);
+      const cx =
+        w *
+        (INITIAL_CENTER_X_RATIO +
+          (FINAL_CENTER_X_RATIO - INITIAL_CENTER_X_RATIO) * enterEase);
+      const cy = h / 2;
+
+      // Global rotation driven by scroll position, with random direction changes
+      const globalRotation = globalRotationRef.current;
 
       // Advance per-ring rotation offsets
       for (let ri = 0; ri < RING_DEFS.length; ri++) {
