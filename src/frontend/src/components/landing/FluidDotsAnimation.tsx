@@ -103,11 +103,13 @@ const BREATHE_AMP = 0.03;
 
 // ─── Scroll → global rotation ─────────────────────────────────────────────────
 // scrollY * SCROLL_ROT_FACTOR = radians of whole-animation rotation
-const SCROLL_ROT_FACTOR = 0.0015;
-const ENTER_DURATION = 1200;
-const INITIAL_CENTER_X_RATIO = 0.95;
+const SCROLL_ROT_FACTOR = 0.004;
+const SCROLL_SCALE_FACTOR = 0.0012;
+const INITIAL_CENTER_X_RATIO = 0.5;
 const FINAL_CENTER_X_RATIO = 0.5;
-const SCROLL_THRESHOLD = 300; // pixels to scroll for full centering
+const SCROLL_EXPAND_THRESHOLD = 800; // pixels to scroll for expansion
+const MAX_SCALE = 2.2; // max scale factor based on scroll
+const MIN_SCALE = 1.0; // min scale factor
 
 function easeOutCubic(t: number) {
   return 1 - Math.pow(1 - t, 3);
@@ -216,12 +218,9 @@ export function FluidDotsAnimation() {
       const breathe =
         1 + BREATHE_AMP * Math.sin(elapsed * BREATHE_SPEED * Math.PI * 2);
 
-      const scrollProgress = Math.min(1, window.scrollY / SCROLL_THRESHOLD);
-      const enterEase = easeOutCubic(scrollProgress);
-      const cx =
-        w *
-        (INITIAL_CENTER_X_RATIO +
-          (FINAL_CENTER_X_RATIO - INITIAL_CENTER_X_RATIO) * enterEase);
+      const scrollY = window.scrollY;
+      const scrollScale = Math.min(MAX_SCALE, 1 + (scrollY / SCROLL_EXPAND_THRESHOLD) * (MAX_SCALE - 1));
+      const cx = w / 2;
       const cy = h / 2;
 
       // Global rotation driven by scroll position
@@ -239,12 +238,12 @@ export function FluidDotsAnimation() {
         const ring = rings[ri];
         const rotOff = rotOffsets.current[ri];
         const col = palette[ri];
-        const baseDotR = DOT_RADII[ri];
+        const baseDotR = DOT_RADII[ri] * scrollScale;
 
-        // Effective tilt = per-ring tilt + alternating global rotation
-        const tiltRad = (def.tiltDeg * Math.PI) / 180 + globalRotation * 0.3 * (ri % 2 === 0 ? 1 : -1);
+        // Complex tilt combining per-ring tilt + alternating global rotation + scroll influence
+        const tiltRad = (def.tiltDeg * Math.PI) / 180 + globalRotation * 0.5 * (ri % 2 === 0 ? 1 : -1) + scrollY * SCROLL_ROT_FACTOR * 0.0008;
 
-        const ryBase = def.ryBase * breathe;
+        const ryBase = def.ryBase * breathe * scrollScale;
         // Atom-style flat ellipse: semi-major = ryBase * H_STRETCH,
         // semi-minor = semi-major * eccentricity (passes near center)
         const semiMajor = ryBase * H_STRETCH;
@@ -258,7 +257,7 @@ export function FluidDotsAnimation() {
         const sinFrame = Math.sin(tiltRad);
         const cosFrame = Math.cos(tiltRad);
 
-        const vRot = globalRotation * (ri % 2 === 0 ? 1 : -1);
+        const vRot = globalRotation * (ri % 2 === 0 ? 1.2 : -1.2) + scrollY * SCROLL_ROT_FACTOR * (ri % 2 === 0 ? 0.6 : -0.6);
 
         for (const dot of ring) {
           const angle = dot.baseAngle + rotOff + dot.displace;
@@ -272,7 +271,7 @@ export function FluidDotsAnimation() {
           const newZ = ly_raw * sinV;
           const ly = newY;
           const px0 = cx + lx * cosFrame - ly * sinFrame;
-          const py0 = cy + lx * sinFrame + ly * cosFrame + newZ * 0.3;
+          const py0 = cy + lx * sinFrame + ly * cosFrame + newZ * 0.5 * scrollScale;
 
           // ── Jelly radial physics ────────────────────────────────────────────
           const dxM = px0 - mx;
