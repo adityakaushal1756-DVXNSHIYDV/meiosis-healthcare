@@ -263,13 +263,14 @@ export function FluidDotsAnimation() {
         for (const dot of ring) {
           const angle = dot.baseAngle + rotOff + dot.displace;
 
-          // Natural position on tilted ellipse in screen space
-          // The ellipse is drawn in the ring's own frame then rotated into screen space
-          const lx = rx * Math.cos(angle);
-          const ly_raw = ry * Math.sin(angle);
-          const ly = ly_raw * Math.cos(vRot);
+          // 3D rotation around horizontal axis
+          const cosV = Math.cos(vRot);
+          const sinV = Math.sin(vRot);
+          const newY = ly_raw * cosV;
+          const newZ = ly_raw * sinV;
+          const ly = newY;
           const px0 = cx + lx * cosFrame - ly * sinFrame;
-          const py0 = cy + lx * sinFrame + ly * cosFrame;
+          const py0 = cy + lx * sinFrame + ly * cosFrame + newZ * 0.3;
 
           // ── Jelly radial physics ────────────────────────────────────────────
           const dxM = px0 - mx;
@@ -313,8 +314,8 @@ export function FluidDotsAnimation() {
           const px = px0 + uxC * dot.radialDisplace;
           const py = py0 + uyC * dot.radialDisplace;
 
-          // Depth cue: back dots slightly dimmer and smaller
-          dot.depth = (Math.sin(angle) + 1) / 2;
+          // Depth cue: back dots slightly dimmer and smaller based on 3D z
+          dot.depth = (newZ / ry + 1) / 2; // normalize from -1 to 1 to 0 to 1
           const depthScale = 0.6 + dot.depth * 0.4;
           const dotR = baseDotR * depthScale;
           const alpha = col.alpha * (0.5 + dot.depth * 0.5);
