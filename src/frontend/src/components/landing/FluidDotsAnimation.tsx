@@ -109,6 +109,10 @@ const FINAL_CENTER_X_RATIO = 0.5;
 const PEAK_SCALE = 2.3; // max scale at middle of page
 const MIN_SCALE = 1.0; // min scale factor at start and end
 
+// Smooth scroll velocity accumulation to prevent jitter
+const SCROLL_VELOCITY_DAMPING = 0.92; // One frame decay
+const MAX_SCROLL_VELOCITY = 0.15; // Radians per frame max
+
 function easeOutCubic(t: number) {
   return 1 - Math.pow(1 - t, 3);
 }
@@ -144,6 +148,7 @@ export function FluidDotsAnimation() {
   const buildupStartRef = useRef<number>(0);
   const rotOffsets = useRef<number[]>(RING_DEFS.map(() => 0));
   const globalRotationRef = useRef<number>(0);
+  const scrollVelocityRef = useRef<number>(0);
   const lastScrollYRef = useRef<number>(
     typeof window !== "undefined" ? window.scrollY : 0,
   );
@@ -179,9 +184,12 @@ export function FluidDotsAnimation() {
       const newY = window.scrollY;
       const delta = newY - lastScrollYRef.current;
 
-      if (Math.abs(delta) > 0.5) {
-        globalRotationRef.current += delta * SCROLL_ROT_FACTOR;
-        globalRotationRef.current %= Math.PI * 2;
+      if (Math.abs(delta) > 0.1) {
+        // Accumulate velocity from scroll delta
+        let targetVelocity = delta * SCROLL_ROT_FACTOR * 0.6; // Normalized velocity
+        targetVelocity = Math.max(-MAX_SCROLL_VELOCITY, Math.min(MAX_SCROLL_VELOCITY, targetVelocity));
+        // Exponential smoothing towards target velocity
+        scrollVelocityRef.current += (targetVelocity - scrollVelocityRef.current) * 0.4;
       }
 
       lastScrollYRef.current = newY;
@@ -213,7 +221,7 @@ export function FluidDotsAnimation() {
         lastFrameTimeRef.current = ts;
       }
       const deltaMs = Math.min(ts - lastFrameTimeRef.current, 16.67); // Cap at 60fps equivalent
-      const deltaS = deltaMs / 1000;
+      const deltaS = (deltaMs / 1000) * 0.6; // Scale down delta for stability
       lastFrameTimeRef.current = ts;
       
       const elapsed = ts - startRef.current;
@@ -246,8 +254,11 @@ export function FluidDotsAnimation() {
       const cx = w / 2;
       const cy = h / 2;
 
-      // Global rotation driven by scroll position
-      const globalRotation = globalRotationRef.current;
+      // ── Apply scroll velocity with damping ──────────────────────────────────
+      globalRotationRef.current += scrollVelocityRef.current * deltaS;
+      globalRotationRef.current %= Math.PI * 2;
+      // Dampen scroll velocity over time (no jitter!)
+      scrollVelocityRef.current *= 1 - (1 - SCROLL_VELOCITY_DAMPING) * deltaS * 15;
 
       // Advance per-ring rotation offsets
       for (let ri = 0; ri < RING_DEFS.length; ri++) {
@@ -264,7 +275,7 @@ export function FluidDotsAnimation() {
         const baseDotR = DOT_RADII[ri] * scrollScale;
 
         // Complex tilt combining per-ring tilt + alternating global rotation + scroll influence
-        const tiltRad = (def.tiltDeg * Math.PI) / 180 + globalRotation * 0.5 * (ri % 2 === 0 ? 1 : -1) + scrollY * SCROLL_ROT_FACTOR * 0.0008;
+        const tiltRad = (def.tiltDeg * Math.PI) / 180 + globalRotationRef.current * 0.5 * (ri % 2 === 0 ? 1 : -1) + scrollY * SCROLL_ROT_FACTOR * 0.0008;
 
         const ryBase = def.ryBase * breathe * scrollScale;
         // Atom-style flat ellipse: semi-major = ryBase * H_STRETCH,
@@ -280,7 +291,7 @@ export function FluidDotsAnimation() {
         const sinFrame = Math.sin(tiltRad);
         const cosFrame = Math.cos(tiltRad);
 
-        const vRot = globalRotation * (ri % 2 === 0 ? 1.2 : -1.2) + scrollY * SCROLL_ROT_FACTOR * (ri % 2 === 0 ? 0.6 : -0.6);
+        const vRot = globalRotationRef.current * (ri % 2 === 0 ? 1.2 : -1.2) + scrollY * SCROLL_ROT_FACTOR * (ri % 2 === 0 ? 0.6 : -0.6);
 
         for (const dot of ring) {
           const angle = dot.baseAngle + rotOff + dot.displace;
@@ -308,8 +319,9 @@ export function FluidDotsAnimation() {
             dot.radialDisplaceV += force * deltaS;
           }
 
+          // Linear damping for stability (prevents jitter)
           dot.radialDisplaceV -= RADIAL_SPRING * dot.radialDisplace * deltaS;
-          dot.radialDisplaceV *= Math.pow(RADIAL_DAMPING, deltaS);
+          dot.radialDisplaceV *= (1 - RADIAL_DAMPING * deltaS);
           dot.radialDisplace += dot.radialDisplaceV * deltaS;
 
           if (dot.radialDisplace > MAX_RADIAL_DISP)
@@ -317,13 +329,18 @@ export function FluidDotsAnimation() {
           if (dot.radialDisplace < -MAX_RADIAL_DISP)
             dot.radialDisplace = -MAX_RADIAL_DISP;
 
+          // Clamp velocity to prevent explosions
+          const maxVel = MAX_RADIAL_DISP * 2;
+          if (Math.abs(dot.radialDisplaceV) > maxVel)
+            dot.radialDisplaceV = Math.sign(dot.radialDisplaceV) * maxVel;
+
           // ── Angular displacement (subtle jelly) ─────────────────────────────
           if (d2M < CURSOR_RADIUS * CURSOR_RADIUS && d2M > 1) {
             const dist = Math.sqrt(d2M);
             const push = ANG_FORCE * (1 - dist / CURSOR_RADIUS) * deltaS;
             dot.displaceV += push * (Math.random() > 0.5 ? 1 : -1);
           }
-          dot.displaceV *= Math.pow(ANG_DAMPING, deltaS);
+          dot.displaceV *= (1 - ANG_DAMPING * deltaS);
           dot.displaceV -= dot.displace * ANG_RETURN * deltaS;
           dot.displace += dot.displaceV * deltaS;
 
