@@ -307,7 +307,7 @@
   }
 
   .text-content-md {
-    @apply text-base md:text-lg text-slate-600 dark:text-slate-350 leading-relaxed;
+    @apply text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed;
   }
 
   /* Gradient Text Utilities */
