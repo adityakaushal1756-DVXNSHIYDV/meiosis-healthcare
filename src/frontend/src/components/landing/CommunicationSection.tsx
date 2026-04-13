@@ -1,10 +1,9 @@
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
-  MessageSquare,
   Phone,
+  MessageSquare,
   Bell,
-  Users,
+  Zap,
 } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -14,32 +13,28 @@ const features = [
     title: "Staff Intercom",
     description:
       "Instant voice and text communication between medical staff. Secure, HIPAA-compliant internal messaging with priority alerts for emergencies and consultations.",
-    badge: "Communication",
-    color: "text-primary bg-primary/10 group-hover:bg-primary/20",
+    color: "text-blue-500 bg-blue-500/10 group-hover:bg-blue-500/20",
   },
   {
     icon: MessageSquare,
     title: "Patient Messaging",
     description:
       "Two-way SMS and app-based messaging for appointment reminders, test results, and follow-up care. Multi-language support with automated translations.",
-    badge: "Patient Care",
-    color: "text-secondary bg-secondary/10 group-hover:bg-secondary/20",
+    color: "text-purple-500 bg-purple-500/10 group-hover:bg-purple-500/20",
   },
   {
     icon: Bell,
     title: "Medication Reminders",
     description:
       "Automated medication adherence system with smart notifications. Integrates with pharmacy records and sends reminders via SMS, app, and voice calls.",
-    badge: "Adherence",
-    color: "text-accent bg-accent/10 group-hover:bg-accent/20",
+    color: "text-orange-500 bg-orange-500/10 group-hover:bg-orange-500/20",
   },
   {
-    icon: Users,
+    icon: Zap,
     title: "LLM-Powered Chat",
     description:
       "AI assistant for patient queries, appointment scheduling, and basic medical information. Trained on medical knowledge with natural language understanding.",
-    badge: "AI",
-    color: "text-primary bg-primary/10 group-hover:bg-primary/20",
+    color: "text-amber-500 bg-amber-500/10 group-hover:bg-amber-500/20",
   },
 ];
 
@@ -75,18 +70,13 @@ export function CommunicationSection() {
               viewport={{ once: true }}
             >
               <Card className="card-base h-full flex flex-col group hover:shadow-lg">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className={`feature-icon ${feature.color}`}>
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                  <Badge variant="outline" className="pill-badge text-secondary border-secondary/30 mt-0.5">
-                    {feature.badge}
-                  </Badge>
+                <div className={`feature-icon ${feature.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
+                  <feature.icon className="h-8 w-8" />
                 </div>
                 <h3 className="font-display font-semibold text-foreground text-lg md:text-xl group-hover:text-accent transition-colors mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-350 text-sm md:text-base leading-relaxed flex-1">
+                <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed flex-1">
                   {feature.description}
                 </p>
               </Card>

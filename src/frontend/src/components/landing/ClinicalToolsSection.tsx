@@ -1,36 +1,35 @@
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { BedDouble, MessageSquare, Mic2, Users2 } from "lucide-react";
+import { Users3, Headphones, Bed, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 
 const clinicalTools = [
   {
-    icon: Users2,
+    icon: Users3,
     title: "Queue Management Engine",
     description:
       "Proprietary queue engine handles high-volume patient flow with real-time position tracking, intelligent token routing, and wait-time displays for reception screens.",
-    tag: "Operations",
+    color: "text-cyan-500 bg-cyan-500/10 group-hover:bg-cyan-500/20",
   },
   {
-    icon: Mic2,
+    icon: Headphones,
     title: "AI-Scribe (Regional Dialects)",
     description:
       "Voice-to-prescription optimized for Hindi, Marathi, Tamil, Bengali, Telugu, and Kannada. Local LLM inference on your hardware keeps every spoken word on-premises.",
-    tag: "AI",
+    color: "text-pink-500 bg-pink-500/10 group-hover:bg-pink-500/20",
   },
   {
-    icon: BedDouble,
+    icon: Bed,
     title: "Hospitalisation Accommodation",
     description:
       "Full inpatient management — bed allocation, ward rounds, transfer orders, and discharge planning. Integrated billing for procedures, room charges, and nursing care.",
-    tag: "Inpatient",
+    color: "text-indigo-500 bg-indigo-500/10 group-hover:bg-indigo-500/20",
   },
   {
-    icon: MessageSquare,
+    icon: MessageCircle,
     title: "Patient Communication",
     description:
       "Post-consultation follow-up, prescription reminders, lab result notifications, and appointment confirmations — delivered via WhatsApp, SMS, or in-app messaging.",
-    tag: "Engagement",
+    color: "text-rose-500 bg-rose-500/10 group-hover:bg-rose-500/20",
   },
 ];
 
@@ -76,21 +75,13 @@ export function ClinicalToolsSection() {
               }}
             >
               <Card className="card-base h-full group hover:shadow-lg">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
-                    <tool.icon className="h-7 w-7 text-primary" />
-                  </div>
-                  <Badge
-                    variant="outline"
-                    className="pill-badge text-accent border-accent/30 mt-0.5"
-                  >
-                    {tool.tag}
-                  </Badge>
+                <div className={`feature-icon ${tool.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
+                  <tool.icon className="h-8 w-8" />
                 </div>
                 <h3 className="font-display font-semibold text-foreground text-lg md:text-xl group-hover:text-accent transition-colors mb-3">
                   {tool.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-350 text-sm md:text-base leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
                   {tool.description}
                 </p>
               </Card>

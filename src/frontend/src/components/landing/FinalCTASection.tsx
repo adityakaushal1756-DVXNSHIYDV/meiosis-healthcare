@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
@@ -23,19 +22,19 @@ export function FinalCTASection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-accent/8 blur-[80px]" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="max-w-4xl mx-auto text-center px-6 md:px-10 py-12 md:py-16 rounded-3xl"
+          style={{
+            background: "oklch(var(--card) / 0.35)",
+            backdropFilter: "blur(20px)",
+            border: "1px solid oklch(var(--border) / 0.2)",
+          }}
         >
-          <Badge
-            variant="outline"
-            className="badge-section mb-8"
-          >
-            Get Started Today
-          </Badge>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-8">
             Ready to Transform <br className="hidden md:inline" />
             <span className="text-gradient-primary">Your Practice?</span>

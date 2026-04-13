@@ -1,10 +1,9 @@
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
   FileText,
   Shield,
-  PenTool,
-  CheckCircle,
+  Wand2,
+  CheckCircle2,
 } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -14,32 +13,28 @@ const features = [
     title: "Legal Document Generation",
     description:
       "Automated creation of all medical documents including prescriptions, discharge summaries, consent forms, and legal certificates. Fully compliant with Indian medical regulations.",
-    badge: "Legal",
-    color: "text-primary bg-primary/10 group-hover:bg-primary/20",
+    color: "text-blue-500 bg-blue-500/10 group-hover:bg-blue-500/20",
   },
   {
     icon: Shield,
     title: "Regulatory Compliance",
     description:
       "Built-in compliance with MCI guidelines, NABH standards, and data protection laws. Digital signatures, audit trails, and tamper-proof document storage.",
-    badge: "Compliance",
-    color: "text-secondary bg-secondary/10 group-hover:bg-secondary/20",
+    color: "text-purple-500 bg-purple-500/10 group-hover:bg-purple-500/20",
   },
   {
-    icon: PenTool,
+    icon: Wand2,
     title: "Smart Templates",
     description:
       "Intelligent document templates that adapt to specialty, patient condition, and regulatory requirements. Auto-populate with patient data and clinical findings.",
-    badge: "Automation",
-    color: "text-accent bg-accent/10 group-hover:bg-accent/20",
+    color: "text-orange-500 bg-orange-500/10 group-hover:bg-orange-500/20",
   },
   {
-    icon: CheckCircle,
+    icon: CheckCircle2,
     title: "Document Verification",
     description:
       "Blockchain-based document verification and sharing. QR codes for patient access, secure sharing with insurers, and integration with government health portals.",
-    badge: "Security",
-    color: "text-primary bg-primary/10 group-hover:bg-primary/20",
+    color: "text-emerald-500 bg-emerald-500/10 group-hover:bg-emerald-500/20",
   },
 ];
 
@@ -75,18 +70,13 @@ export function DocumentsSection() {
               viewport={{ once: true }}
             >
               <Card className="card-base h-full flex flex-col group hover:shadow-lg">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className={`feature-icon ${feature.color}`}>
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                  <Badge variant="outline" className="pill-badge text-primary border-primary/30 mt-0.5">
-                    {feature.badge}
-                  </Badge>
+                <div className={`feature-icon ${feature.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
+                  <feature.icon className="h-8 w-8" />
                 </div>
                 <h3 className="font-display font-semibold text-foreground text-lg md:text-xl group-hover:text-accent transition-colors mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-350 text-sm md:text-base leading-relaxed flex-1">
+                <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed flex-1">
                   {feature.description}
                 </p>
               </Card>
