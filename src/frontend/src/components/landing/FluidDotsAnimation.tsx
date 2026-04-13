@@ -141,6 +141,7 @@ export function FluidDotsAnimation() {
   const ringsRef = useRef<RingDot[][]>([]);
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const startRef = useRef<number>(0);
+  const buildupStartRef = useRef<number>(0);
   const rotOffsets = useRef<number[]>(RING_DEFS.map(() => 0));
   const globalRotationRef = useRef<number>(0);
   const lastScrollYRef = useRef<number>(
@@ -187,6 +188,7 @@ export function FluidDotsAnimation() {
 
     resize();
     startRef.current = performance.now();
+    buildupStartRef.current = performance.now();
     window.addEventListener("resize", resize);
     window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -212,6 +214,13 @@ export function FluidDotsAnimation() {
       const palette = isLight ? COLORS_LIGHT : COLORS_DARK;
 
       ctx.clearRect(0, 0, w, h);
+
+      // ── Build-up animation: progressive reveal over 3 seconds ────────────────
+      const buildupElapsed = ts - buildupStartRef.current;
+      const BUILDUP_DURATION = 3000; // 3 seconds
+      let buildupScale = Math.min(1, buildupElapsed / BUILDUP_DURATION);
+      // Smooth easing: ease-out cubic
+      buildupScale = 1 - Math.pow(1 - buildupScale, 3);
 
       const breathe =
         1 + BREATHE_AMP * Math.sin(elapsed * BREATHE_SPEED * Math.PI * 2);
@@ -323,7 +332,7 @@ export function FluidDotsAnimation() {
           dot.depth = (newZ / ry + 1) / 2; // normalize from -1 to 1 to 0 to 1
           const depthScale = 0.6 + dot.depth * 0.4;
           const dotR = baseDotR * depthScale;
-          const alpha = col.alpha * (0.5 + dot.depth * 0.5);
+          const alpha = col.alpha * (0.5 + dot.depth * 0.5) * buildupScale;
 
           // ── Draw small filled circle (dotted line dot) ──────────────────────
           ctx.beginPath();

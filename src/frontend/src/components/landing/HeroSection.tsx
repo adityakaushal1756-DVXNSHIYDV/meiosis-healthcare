@@ -23,7 +23,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] flex items-center overflow-hidden"
+      className="relative min-h-[100svh] flex items-center overflow-hidden bg-background/50 dark:bg-background/30"
       style={{ zIndex: 1 }}
     >
       {/* Background radial gradients */}

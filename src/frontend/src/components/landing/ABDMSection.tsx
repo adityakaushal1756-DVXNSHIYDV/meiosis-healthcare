@@ -25,7 +25,7 @@ const abdmModules = [
 
 export function ABDMSection() {
   return (
-    <section id="abdm" className="section-wrapper bg-muted/30 border-t border-white/5">
+    <section id="abdm" className="section-wrapper border-t border-white/5">
       <div className="container mx-auto px-4">
         <div className="grid-2-col items-center">
           {/* Left: Content */}

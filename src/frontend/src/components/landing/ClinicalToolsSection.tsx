@@ -36,7 +36,7 @@ const clinicalTools = [
 
 export function ClinicalToolsSection() {
   return (
-    <section id="tools" className="section-wrapper bg-background border-t border-white/5">
+    <section id="tools" className="section-wrapper border-t border-white/5">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 36, scale: 0.97 }}
