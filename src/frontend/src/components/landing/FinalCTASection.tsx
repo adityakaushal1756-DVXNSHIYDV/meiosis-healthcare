@@ -36,11 +36,11 @@ export function FinalCTASection() {
           >
             Get Started Today
           </Badge>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-8">
             Ready to Transform{" "}
-            <span className="text-gradient-primary">Your Practice?</span>
+            <span className="text-gradient-primary block">Your Practice?</span>
           </h2>
-          <p className="text-xl text-muted-foreground leading-relaxed mb-12 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12 max-w-3xl mx-auto">
             Start delivering faster, smarter care with Meiosis. Begin your free
             trial — no credit card required, ABDM compliant from day one.
           </p>
@@ -97,7 +97,7 @@ export function FinalCTASection() {
               duration: 0.5,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-col sm:flex-row justify-center gap-4"
           >
             <a
               href={`${AUTH_URL}/signup`}
@@ -106,18 +106,18 @@ export function FinalCTASection() {
             >
               <Button
                 size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-base px-10 py-6 shadow-elevated transition-smooth"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-10 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
                 data-ocid="final-cta-primary"
               >
                 Start Free Trial
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </a>
             <a href={AUTH_URL} target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 variant="outline"
-                className="font-semibold text-base px-10 py-6 border-border hover:border-primary/40 transition-smooth"
+                className="font-semibold text-lg px-10 py-6 border-2 border-border hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 rounded-xl"
                 data-ocid="final-cta-signin"
               >
                 Sign In to Dashboard

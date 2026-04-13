@@ -6,8 +6,9 @@ import { motion } from "motion/react";
 const AUTH_URL = "https://meiosis-healthcare.vercel.app";
 
 const stats = [
+  { value: "40%", label: "More Patients Seen" },
   { value: "99.9%", label: "Uptime SLA" },
-  { value: "ABDM", label: "Certification Upcoming" },
+  { value: "ABDM", label: "Certified" },
 ];
 
 function DevTag() {
@@ -67,15 +68,16 @@ export function HeroSection() {
               delay: 0.12,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="font-display text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05]"
+            className="font-display text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] mb-2"
           >
-            <span className="text-gradient-primary">
+            <span className="text-gradient-primary block">
               The Future of
               <br />
               Clinical Care
             </span>
-            <br />
-            <span className="text-foreground">in India</span>
+            <span className="text-foreground block mt-2">
+              in India
+            </span>
           </motion.h1>
 
           <motion.p
@@ -86,11 +88,12 @@ export function HeroSection() {
               delay: 0.22,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
+            className="mt-6 text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl"
           >
             Keyboard-efficient, local-first, and fully ABDM-aligned EMR built
-            for the speed and complexity of modern Indian clinics. See 40% more
-            patients without sacrificing care quality.
+            for the speed and complexity of modern Indian clinics. See{" "}
+            <span className="font-semibold text-accent">40% more patients</span>{" "}
+            without sacrificing care quality.
           </motion.p>
 
           <motion.div
@@ -101,7 +104,7 @@ export function HeroSection() {
               delay: 0.32,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-8 flex flex-wrap gap-3 justify-center"
+            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
               href={`${AUTH_URL}/signup`}
@@ -110,11 +113,11 @@ export function HeroSection() {
             >
               <Button
                 size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-base px-7 shadow-elevated transition-smooth"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
                 data-ocid="hero-cta-primary"
               >
                 Get Started Free
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </a>
             <a
@@ -125,10 +128,10 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="font-semibold text-base px-7 border-border hover:border-primary/40 transition-smooth"
+                className="font-semibold text-lg px-8 py-4 border-2 border-border hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 rounded-xl"
                 data-ocid="hero-cta-demo"
               >
-                <Play className="mr-2 h-4 w-4" />
+                <Play className="mr-2 h-5 w-5" />
                 Request Demo
               </Button>
             </a>
@@ -156,7 +159,7 @@ export function HeroSection() {
               delay: 0.5,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-              className="mt-10 flex gap-3 justify-center"
+              className="mt-12 flex gap-4 justify-center"
           >
             {stats.map((stat, i) => (
               <motion.div
@@ -168,12 +171,12 @@ export function HeroSection() {
                   delay: 0.56 + i * 0.08,
                   ease: [0.34, 1.56, 0.64, 1],
                 }}
-                className="text-center p-3 px-5 rounded-xl bg-card/70 backdrop-blur-sm border border-border/60"
+                className="text-center p-4 px-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 shadow-lg"
               >
-                <div className="font-display text-xl font-bold text-primary">
+                <div className="font-display text-2xl font-bold text-accent mb-1">
                   {stat.value}
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5 leading-tight">
+                <div className="text-sm text-muted-foreground font-medium">
                   {stat.label}
                 </div>
               </motion.div>

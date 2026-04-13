@@ -70,18 +70,18 @@ export function FeaturesSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="section-header"
+          className="section-header mb-16"
         >
           <Badge
             variant="outline"
-            className="badge-section mb-5"
+            className="badge-section mb-6"
           >
             The Meiosis Ecosystem
           </Badge>
-          <h2 className="section-title">
+          <h2 className="section-title mb-6">
             Everything Your Clinic Needs
           </h2>
-          <p className="section-description">
+          <p className="section-description max-w-3xl">
             Built from first principles for Indian healthcare — privacy-first,
             keyboard-fast, natively ABDM-compliant.
           </p>
@@ -100,26 +100,26 @@ export function FeaturesSection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              <Card className="card-base h-full">
-                <div className="flex items-start gap-4">
+              <Card className="card-base h-full group hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start gap-5">
                   <div
-                    className={`feature-icon flex-shrink-0 ${feature.color}`}
+                    className={`feature-icon flex-shrink-0 ${feature.color} group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <feature.icon className="h-5 w-5" />
+                    <feature.icon className="h-6 w-6" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-3">
-                      <h3 className="font-display font-semibold text-foreground text-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <h3 className="font-display font-semibold text-foreground text-xl group-hover:text-accent transition-colors">
                         {feature.title}
                       </h3>
                       <Badge
                         variant="outline"
-                        className="text-[10px] px-1.5 py-0 border-secondary/30 text-secondary shrink-0"
+                        className="text-xs px-2.5 py-1 border-secondary/30 text-secondary shrink-0"
                       >
                         {feature.badge}
                       </Badge>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-muted-foreground leading-relaxed text-base">
                       {feature.description}
                     </p>
                   </div>

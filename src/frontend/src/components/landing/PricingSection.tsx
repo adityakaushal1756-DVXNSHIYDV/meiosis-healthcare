@@ -70,10 +70,10 @@ export function PricingSection() {
           >
             Pricing
           </Badge>
-          <h2 className="section-title">
+          <h2 className="section-title mb-6">
             Simple, Transparent Pricing
           </h2>
-          <p className="section-description">
+          <p className="section-description max-w-3xl mb-12">
             Flat-fee subscription. No per-patient charges. No hidden fees. No
             surprises.
           </p>
@@ -124,9 +124,9 @@ export function PricingSection() {
               }}
             >
               <Card
-                className={`card-base h-full flex flex-col relative ${
+                className={`card-base h-full flex flex-col relative group hover:shadow-2xl transition-all duration-300 ${
                   plan.highlighted
-                    ? "border-primary ring-2 ring-primary/25"
+                    ? "border-accent ring-2 ring-accent/25 shadow-xl"
                     : ""
                 }`}
               >
@@ -195,10 +195,10 @@ export function PricingSection() {
                   rel="noopener noreferrer"
                 >
                   <Button
-                    className={`w-full font-semibold text-base py-6 ${
+                    className={`w-full font-semibold text-base py-6 rounded-xl transition-all duration-300 ${
                       plan.highlighted
-                        ? "bg-accent text-accent-foreground hover:bg-accent/90 shadow-elevated"
-                        : "bg-primary text-primary-foreground hover:bg-primary/90"
+                        ? "bg-accent text-accent-foreground hover:bg-accent/90 shadow-xl hover:shadow-2xl"
+                        : "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl"
                     }`}
                     data-ocid={`pricing-cta-${plan.name.toLowerCase()}`}
                   >

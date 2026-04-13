@@ -159,11 +159,11 @@
 
   /* Modular Layout System */
   .section-wrapper {
-    @apply py-20 md:py-32 lg:py-40 bg-background/50 dark:bg-background/30;
+    @apply py-24 md:py-32 lg:py-40 xl:py-48 bg-background/50 dark:bg-background/30;
   }
 
   .section-wrapper-glass {
-    @apply py-20 md:py-32 lg:py-40;
+    @apply py-24 md:py-32 lg:py-40 xl:py-48;
     background: oklch(var(--card) / 0.35);
     backdrop-filter: blur(20px);
     border-top: 1px solid oklch(var(--border) / 0.2);
@@ -180,7 +180,7 @@
   }
 
   .section-title {
-    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] text-foreground;
+    @apply font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1] text-foreground;
   }
 
   .section-description {
@@ -213,18 +213,19 @@
   }
 
   .cta-primary {
-    @apply px-8 py-3 font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors inline-flex items-center gap-2;
+    @apply px-8 py-3 font-semibold rounded-xl bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2;
   }
 
   .cta-secondary {
-    @apply px-8 py-3 font-semibold rounded-lg border border-border bg-background hover:bg-muted transition-colors inline-flex items-center gap-2;
+    @apply px-8 py-3 font-semibold rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:bg-card hover:border-primary/30 transition-all duration-300 inline-flex items-center gap-2;
+  }
   }
 
   .badge-section {
-    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide uppercase bg-primary/10 border border-primary/20 text-primary;
+    @apply inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold tracking-wide uppercase bg-accent/10 border border-accent/25 text-accent;
   }
 
   .feature-icon {
-    @apply w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/10 flex items-center justify-center text-primary p-2.5;
+    @apply w-12 h-12 rounded-xl bg-gradient-to-br from-accent/15 to-primary/10 border border-accent/20 flex items-center justify-center text-accent p-2.5 shadow-sm;
   }
 }
