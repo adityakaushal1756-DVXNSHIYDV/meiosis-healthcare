@@ -25,7 +25,7 @@ const abdmModules = [
 
 export function ABDMSection() {
   return (
-    <section id="abdm" className="section-wrapper border-t border-white/5">
+    <section id="abdm" className="section-wrapper-glass border-t border-white/5">
       <div className="container mx-auto px-4">
         <div className="grid-2-col items-center">
           {/* Left: Content */}
@@ -35,7 +35,7 @@ export function ABDMSection() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex flex-wrap items-center gap-3 mb-6">
               <Badge
                 variant="outline"
                 className="badge-section"

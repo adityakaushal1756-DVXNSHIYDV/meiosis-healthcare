@@ -159,11 +159,24 @@
 
   /* Modular Layout System */
   .section-wrapper {
-    @apply py-32 lg:py-40 bg-background/50 dark:bg-background/30;
+    @apply py-20 md:py-32 lg:py-40 bg-background/50 dark:bg-background/30;
+  }
+
+  .section-wrapper-glass {
+    @apply py-20 md:py-32 lg:py-40;
+    background: oklch(var(--card) / 0.35);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid oklch(var(--border) / 0.2);
+    border-bottom: 1px solid oklch(var(--border) / 0.2);
+  }
+
+  .dark .section-wrapper-glass {
+    background: oklch(var(--card) / 0.25);
+    backdrop-filter: blur(24px);
   }
 
   .section-header {
-    @apply text-center max-w-3xl mx-auto mb-16 lg:mb-20;
+    @apply text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-20;
   }
 
   .section-title {

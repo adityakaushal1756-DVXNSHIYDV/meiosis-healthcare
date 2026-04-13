@@ -236,7 +236,7 @@ export function EMREfficiencySection() {
   return (
     <section id="emr" className="section-wrapper border-t border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid-2-col">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left: Feature list */}
           <motion.div
             initial={{ opacity: 0, x: -40, scale: 0.97 }}
@@ -358,7 +358,7 @@ export function EMREfficiencySection() {
             </div>
 
             {/* Side-by-side: Workflow Optimisation + SNOMED CT panels */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Workflow Optimisation Panel — LEFT */}
               <WorkflowOptimisationPanel />
 

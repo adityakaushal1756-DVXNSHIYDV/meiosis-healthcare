@@ -147,6 +147,7 @@ export function FluidDotsAnimation() {
   const lastScrollYRef = useRef<number>(
     typeof window !== "undefined" ? window.scrollY : 0,
   );
+  const lastFrameTimeRef = useRef<number>(0);
   const { resolvedTheme } = useTheme();
   const themeRef = useRef<string | undefined>(resolvedTheme);
 
@@ -206,6 +207,15 @@ export function FluidDotsAnimation() {
       if (!canvas || !ctx) return;
       const w = window.innerWidth;
       const h = window.innerHeight;
+      
+      // ── Delta time calculation for smooth animation ────────────────────────
+      if (lastFrameTimeRef.current === 0) {
+        lastFrameTimeRef.current = ts;
+      }
+      const deltaMs = Math.min(ts - lastFrameTimeRef.current, 16.67); // Cap at 60fps equivalent
+      const deltaS = deltaMs / 1000;
+      lastFrameTimeRef.current = ts;
+      
       const elapsed = ts - startRef.current;
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
@@ -295,12 +305,12 @@ export function FluidDotsAnimation() {
             const dist = Math.sqrt(d2M);
             const t = 1 - dist / CURSOR_RADIUS;
             const force = t * t * MAX_RADIAL_DISP * 0.35;
-            dot.radialDisplaceV += force;
+            dot.radialDisplaceV += force * deltaS;
           }
 
-          dot.radialDisplaceV -= RADIAL_SPRING * dot.radialDisplace;
-          dot.radialDisplaceV *= RADIAL_DAMPING;
-          dot.radialDisplace += dot.radialDisplaceV;
+          dot.radialDisplaceV -= RADIAL_SPRING * dot.radialDisplace * deltaS;
+          dot.radialDisplaceV *= Math.pow(RADIAL_DAMPING, deltaS);
+          dot.radialDisplace += dot.radialDisplaceV * deltaS;
 
           if (dot.radialDisplace > MAX_RADIAL_DISP)
             dot.radialDisplace = MAX_RADIAL_DISP;
@@ -310,12 +320,12 @@ export function FluidDotsAnimation() {
           // ── Angular displacement (subtle jelly) ─────────────────────────────
           if (d2M < CURSOR_RADIUS * CURSOR_RADIUS && d2M > 1) {
             const dist = Math.sqrt(d2M);
-            const push = ANG_FORCE * (1 - dist / CURSOR_RADIUS);
+            const push = ANG_FORCE * (1 - dist / CURSOR_RADIUS) * deltaS;
             dot.displaceV += push * (Math.random() > 0.5 ? 1 : -1);
           }
-          dot.displaceV *= ANG_DAMPING;
-          dot.displaceV -= dot.displace * ANG_RETURN;
-          dot.displace += dot.displaceV;
+          dot.displaceV *= Math.pow(ANG_DAMPING, deltaS);
+          dot.displaceV -= dot.displace * ANG_RETURN * deltaS;
+          dot.displace += dot.displaceV * deltaS;
 
           // Unit vector from ring center → dot (radial direction)
           const dxC = px0 - cx;

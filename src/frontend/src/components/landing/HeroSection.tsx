@@ -33,7 +33,7 @@ export function HeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px]" />
       </div>
 
-      <div className="container mx-auto px-4 py-16 lg:py-20 relative z-10 flex justify-center">
+      <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20 relative z-10 flex justify-center">
         <div className="max-w-2xl text-center">
           {/* Currently Under Development tag */}
           <motion.div

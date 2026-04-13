@@ -16,7 +16,7 @@ function DevTag() {
 
 export function FinalCTASection() {
   return (
-    <section className="section-wrapper relative overflow-hidden border-t border-white/5">
+    <section className="section-wrapper-glass relative overflow-hidden border-t border-white/5">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full bg-primary/8 blur-[120px]" />
@@ -58,7 +58,7 @@ export function FinalCTASection() {
             className="mb-10 flex justify-center"
           >
             <div
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full
+              className="inline-flex flex-col sm:flex-row items-center gap-3 px-6 sm:px-8 py-4 rounded-2xl sm:rounded-full
                 bg-gradient-to-r from-accent/20 via-accent/15 to-accent/20
                 border border-accent/50
                 shadow-[0_0_48px_0px_rgba(16,185,129,0.35),0_0_12px_0px_rgba(16,185,129,0.2)]
@@ -76,8 +76,8 @@ export function FinalCTASection() {
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent -skew-x-12 pointer-events-none"
               />
               <Sparkles className="h-5 w-5 text-accent flex-shrink-0" />
-              <div>
-                <div className="text-base font-bold text-accent tracking-tight leading-none">
+              <div className="text-center sm:text-left">
+                <div className="text-sm sm:text-base font-bold text-accent tracking-tight leading-tight">
                   3 Months Free — No Credit Card Required
                 </div>
                 <div className="text-sm text-muted-foreground mt-1">
