@@ -175,11 +175,11 @@
   }
 
   .card-base {
-    @apply rounded-lg border border-border bg-card/50 backdrop-blur-sm p-6 md:p-8 transition-all duration-300 hover:bg-card/80 hover:shadow-subtle;
+    @apply rounded-lg border border-border bg-card backdrop-blur-sm p-6 md:p-8 transition-all duration-300 hover:bg-card hover:shadow-subtle;
   }
 
   .card-base-glass {
-    @apply rounded-lg border border-white/5 bg-background/40 backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:bg-background/60 hover:shadow-subtle;
+    @apply rounded-lg border border-white/5 bg-background backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:bg-background hover:shadow-subtle;
   }
 
   .grid-features {
