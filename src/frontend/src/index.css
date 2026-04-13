@@ -188,16 +188,24 @@
   }
 
   .card-base {
-    @apply rounded-lg border border-border p-6 md:p-8 transition-all duration-300 hover:shadow-subtle;
-    background: oklch(var(--card) / 0.65);
-    backdrop-filter: blur(16px);
-    border: 1px solid oklch(var(--border) / 0.3);
+    @apply rounded-2xl border border-border/70 shadow-sm p-6 md:p-8 transition-all duration-300 hover:shadow-md;
+    background: oklch(var(--card) / 0.88);
+    backdrop-filter: blur(18px);
+    border: 1px solid oklch(var(--border) / 0.55);
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0);
+    will-change: transform, box-shadow;
+  }
+
+  .card-base:hover {
+    transform: perspective(1200px) translate3d(0, -10px, 0) rotateX(0.45deg) rotateY(0.45deg);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
   }
 
   .dark .card-base {
-    background: oklch(var(--card) / 0.45);
-    backdrop-filter: blur(20px);
-    border: 1px solid oklch(var(--border) / 0.2);
+    background: oklch(var(--card) / 0.78);
+    backdrop-filter: blur(22px);
+    border: 1px solid oklch(var(--border) / 0.35);
   }
 
   .card-base-glass {
@@ -218,7 +226,6 @@
 
   .cta-secondary {
     @apply px-8 py-3 font-semibold rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:bg-card hover:border-primary/30 transition-all duration-300 inline-flex items-center gap-2;
-  }
   }
 
   .badge-section {
