@@ -236,61 +236,42 @@ export function EMREfficiencySection() {
   return (
     <section id="emr" className="section-wrapper border-t border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left: Feature list */}
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 36, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
+          <Badge
+            variant="outline"
+            className="badge-section mb-6"
+          >
+            EMR Efficiency
+          </Badge>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
+            Built for{" "}
+            <span className="text-gradient-primary">Clinical Efficiency</span>
+          </h2>
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-light">
+            Traditional EMRs were designed for compliance, not speed. Meiosis was engineered for the doctor — every interaction optimized to reduce cognitive load and administrative friction.
+          </p>
+        </motion.div>
+
+        {/* Two-Column Mirror Layout: Workflow (LEFT) — SNOMED (RIGHT) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto mb-16">
+          {/* LEFT: Workflow Optimisation Panel */}
           <motion.div
             initial={{ opacity: 0, x: -40, scale: 0.97 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <Badge
-              variant="outline"
-              className="badge-section mb-6"
-            >
-              EMR Efficiency
-            </Badge>
-            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
-              Built for{" "}
-              <span className="text-gradient-primary">Clinical Efficiency</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              Traditional EMRs were designed for compliance, not speed. Meiosis
-              was designed for the doctor — every interaction optimized to
-              reduce cognitive load and administrative friction.
-            </p>
-
-            <ul className="space-y-6">
-              {emrFeatures.map((item, i) => (
-                <motion.li
-                  key={item.title}
-                  initial={{ opacity: 0, x: -18 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{
-                    delay: i * 0.1,
-                    duration: 0.5,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                  }}
-                  className="flex items-start gap-4"
-                >
-                  <div className="mt-0.5 h-6 w-6 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="h-4 w-4 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground text-sm">
-                      {item.title}
-                    </div>
-                    <div className="text-sm text-muted-foreground mt-0.5">
-                      {item.description}
-                    </div>
-                  </div>
-                </motion.li>
-              ))}
-            </ul>
+            <WorkflowOptimisationPanel />
           </motion.div>
 
-          {/* Right: Terminal + side-by-side Workflow + SNOMED CT panels */}
+          {/* RIGHT: SNOMED CT Drug Interaction Panel */}
           <motion.div
             initial={{ opacity: 0, x: 40, scale: 0.97 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -300,208 +281,240 @@ export function EMREfficiencySection() {
               delay: 0.1,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="space-y-4"
           >
-            {/* Keyboard shortcut terminal */}
-            <div className="rounded-2xl bg-card border border-border shadow-elevated overflow-hidden">
-              {/* Terminal top bar */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-muted/60 border-b border-border">
+            <div
+              className="rounded-2xl bg-card border border-border shadow-elevated overflow-hidden flex flex-col"
+              style={{ minHeight: 340 }}
+            >
+              {/* Panel header */}
+              <div className="flex items-center gap-2 px-4 py-3 bg-muted/60 border-b border-border flex-shrink-0">
                 <div className="h-3 w-3 rounded-full bg-destructive/60" />
                 <div className="h-3 w-3 rounded-full bg-accent/60" />
                 <div className="h-3 w-3 rounded-full bg-secondary/60" />
-                <span className="ml-2 text-xs font-mono text-muted-foreground">
-                  Meiosis — Keyboard Shortcuts
-                </span>
-                <div className="ml-auto">
-                  <Badge className="pill-badge text-accent border-accent/20">
-                    Active
-                  </Badge>
+                <div className="ml-2 flex items-center gap-2">
+                  <div className="h-4 w-4 rounded bg-secondary/20 flex items-center justify-center">
+                    <Pill className="h-2.5 w-2.5 text-secondary" />
+                  </div>
+                  <span className="text-xs font-mono text-muted-foreground">
+                    SNOMED CT Drug Interactions
+                  </span>
+                </div>
+                <div className="ml-auto flex items-center gap-1.5">
+                  <div className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                  <span className="text-[10px] font-mono text-accent">Live</span>
                 </div>
               </div>
 
-              {/* Shortcuts grid */}
-              <div className="p-5">
-                <p className="text-xs font-mono text-muted-foreground mb-4 tracking-wider uppercase">
-                  Global Shortcuts
-                </p>
-                <div className="space-y-1.5">
-                  {shortcuts.map((s, i) => (
+              <div className="p-4 flex flex-col flex-1 space-y-3">
+                <div className="flex items-center justify-between mb-0.5">
+                  <p className="text-xs font-mono text-muted-foreground tracking-wider uppercase">
+                    Active Interactions
+                  </p>
+                  <Badge
+                    variant="outline"
+                    className="pill-badge text-secondary border-secondary/30"
+                  >
+                    CT v3.0
+                  </Badge>
+                </div>
+
+                {drugInteractions.map((interaction, interactionIdx) => {
+                  const sev = severityConfig[interaction.severity];
+                  const SevIcon = sev.icon;
+                  return (
                     <motion.div
-                      key={s.key}
-                      initial={{ opacity: 0, x: 12 }}
+                      key={`${interaction.drug1.code}-${interaction.drug2.code}`}
+                      initial={{ opacity: 0, x: 10 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{
-                        delay: 0.15 + i * 0.06,
-                        duration: 0.4,
+                        delay: 0.2 + interactionIdx * 0.12,
+                        duration: 0.45,
                         ease: [0.25, 0.46, 0.45, 0.94],
                       }}
-                      className="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-muted/60 transition-smooth group"
+                      className={`rounded-xl border p-2.5 ${sev.bg} ${sev.border}`}
                     >
-                      <span className="text-sm text-foreground font-medium group-hover:text-primary transition-smooth">
-                        {s.action}
-                      </span>
-                      <kbd className="inline-flex items-center gap-1 rounded-md bg-muted border border-border px-2 py-1 font-mono text-xs text-muted-foreground shadow-sm">
-                        {s.key}
-                      </kbd>
-                    </motion.div>
-                  ))}
-                </div>
+                      {/* Drug pair row */}
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <div className="flex items-center gap-1 flex-1 min-w-0">
+                          <div className="h-6 w-6 rounded-lg bg-card border border-border flex items-center justify-center flex-shrink-0">
+                            <Pill className="h-3 w-3 text-muted-foreground" />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-[10px] font-semibold text-foreground truncate">
+                              {interaction.drug1.name}
+                            </div>
+                            <div className="text-[9px] font-mono text-muted-foreground truncate">
+                              {interaction.drug1.code}
+                            </div>
+                          </div>
+                        </div>
 
-                <div className="mt-5 p-3 rounded-lg bg-primary/8 border border-primary/20 flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                  <span className="text-xs font-medium text-primary">
-                    All shortcuts customizable per specialty
+                        <div
+                          className={`flex-shrink-0 px-1.5 py-0.5 rounded-md ${sev.bg} border ${sev.border}`}
+                        >
+                          <SevIcon className={`h-2.5 w-2.5 ${sev.text}`} />
+                        </div>
+
+                        <div className="flex items-center gap-1 flex-1 min-w-0">
+                          <div className="h-6 w-6 rounded-lg bg-card border border-border flex items-center justify-center flex-shrink-0">
+                            <Pill className="h-3 w-3 text-muted-foreground" />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-[10px] font-semibold text-foreground truncate">
+                              {interaction.drug2.name}
+                            </div>
+                            <div className="text-[9px] font-mono text-muted-foreground truncate">
+                              {interaction.drug2.code}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Severity + alert */}
+                      <div className="flex items-start gap-1.5">
+                        <div
+                          className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide ${sev.bg} ${sev.text} border ${sev.border} flex-shrink-0`}
+                        >
+                          <div
+                            className={`h-1.5 w-1.5 rounded-full ${sev.dot}`}
+                          />
+                          {sev.label}
+                        </div>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed">
+                          {interaction.alert}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+
+                {/* SNOMED CT footer stamp */}
+                <div className="mt-auto pt-2 border-t border-border/50 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <div className="h-4 w-4 rounded bg-secondary/15 flex items-center justify-center">
+                      <CheckCircle2 className="h-2.5 w-2.5 text-secondary" />
+                    </div>
+                    <span className="text-[10px] text-muted-foreground">
+                      <span className="font-semibold text-secondary">
+                        SNOMED CT
+                      </span>{" "}
+                      terminology
+                    </span>
+                  </div>
+                  <span className="text-[9px] font-mono text-muted-foreground/60">
+                    FHIR R4
                   </span>
                 </div>
               </div>
             </div>
+          </motion.div>
+        </div>
 
-            {/* Side-by-side: Workflow Optimisation + SNOMED CT panels */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Workflow Optimisation Panel — LEFT */}
-              <WorkflowOptimisationPanel />
-
-              {/* SNOMED CT Drug Interaction Visual Art Panel — RIGHT */}
+        {/* Feature List Below */}
+        <motion.div
+          initial={{ opacity: 0, y: 36, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.65, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {emrFeatures.map((item, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{
-                  duration: 0.6,
-                  delay: 0.3,
+                  delay: 0.25 + i * 0.08,
+                  duration: 0.5,
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
-                className="rounded-2xl bg-card border border-border shadow-elevated overflow-hidden flex flex-col"
-                style={{ minHeight: 340 }}
+                className="flex items-start gap-4"
               >
-                {/* Panel header */}
-                <div className="flex items-center gap-2 px-3 py-3 bg-muted/60 border-b border-border flex-shrink-0">
-                  <div className="h-3 w-3 rounded-full bg-destructive/60" />
-                  <div className="h-3 w-3 rounded-full bg-accent/60" />
-                  <div className="h-3 w-3 rounded-full bg-secondary/60" />
-                  <div className="ml-1 flex items-center gap-1.5">
-                    <div className="h-4 w-4 rounded bg-secondary/20 flex items-center justify-center">
-                      <Pill className="h-2.5 w-2.5 text-secondary" />
-                    </div>
-                    <span className="text-[11px] font-mono text-muted-foreground leading-none">
-                      SNOMED CT
-                    </span>
-                  </div>
-                  <div className="ml-auto flex items-center gap-1">
-                    <div className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                    <span className="text-[9px] font-mono text-accent">
-                      Live
-                    </span>
-                  </div>
+                <div className="mt-1 h-6 w-6 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="h-4 w-4 text-accent" />
                 </div>
-
-                <div className="p-3 space-y-2.5 flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-0.5">
-                    <p className="text-[10px] font-mono text-muted-foreground tracking-wider uppercase">
-                      Interactions
-                    </p>
-                    <Badge
-                      variant="outline"
-                      className="pill-badge text-secondary border-secondary/30"
-                    >
-                      CT v3.0
-                    </Badge>
+                <div className="flex-1">
+                  <div className="font-semibold text-foreground text-base">
+                    {item.title}
                   </div>
-
-                  {drugInteractions.map((interaction, interactionIdx) => {
-                    const sev = severityConfig[interaction.severity];
-                    const SevIcon = sev.icon;
-                    return (
-                      <motion.div
-                        key={`${interaction.drug1.code}-${interaction.drug2.code}`}
-                        initial={{ opacity: 0, x: 10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          delay: 0.4 + interactionIdx * 0.12,
-                          duration: 0.45,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                        }}
-                        className={`rounded-xl border p-2.5 ${sev.bg} ${sev.border}`}
-                      >
-                        {/* Drug pair row */}
-                        <div className="flex items-center gap-1.5 mb-2">
-                          <div className="flex items-center gap-1 flex-1 min-w-0">
-                            <div className="h-6 w-6 rounded-lg bg-card border border-border flex items-center justify-center flex-shrink-0">
-                              <Pill className="h-3 w-3 text-muted-foreground" />
-                            </div>
-                            <div className="min-w-0">
-                              <div className="text-[10px] font-semibold text-foreground truncate">
-                                {interaction.drug1.name}
-                              </div>
-                              <div className="text-[9px] font-mono text-muted-foreground truncate">
-                                {interaction.drug1.code}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            className={`flex-shrink-0 px-1.5 py-0.5 rounded-md ${sev.bg} border ${sev.border}`}
-                          >
-                            <SevIcon className={`h-2.5 w-2.5 ${sev.text}`} />
-                          </div>
-
-                          <div className="flex items-center gap-1 flex-1 min-w-0">
-                            <div className="h-6 w-6 rounded-lg bg-card border border-border flex items-center justify-center flex-shrink-0">
-                              <Pill className="h-3 w-3 text-muted-foreground" />
-                            </div>
-                            <div className="min-w-0">
-                              <div className="text-[10px] font-semibold text-foreground truncate">
-                                {interaction.drug2.name}
-                              </div>
-                              <div className="text-[9px] font-mono text-muted-foreground truncate">
-                                {interaction.drug2.code}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Severity + alert */}
-                        <div className="flex items-start gap-1.5">
-                          <div
-                            className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide ${sev.bg} ${sev.text} border ${sev.border} flex-shrink-0`}
-                          >
-                            <div
-                              className={`h-1.5 w-1.5 rounded-full ${sev.dot}`}
-                            />
-                            {sev.label}
-                          </div>
-                          <p className="text-[10px] text-muted-foreground leading-relaxed">
-                            {interaction.alert}
-                          </p>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-
-                  {/* SNOMED CT footer stamp */}
-                  <div className="mt-auto pt-2 border-t border-border/50 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5">
-                      <div className="h-4 w-4 rounded bg-secondary/15 flex items-center justify-center">
-                        <CheckCircle2 className="h-2.5 w-2.5 text-secondary" />
-                      </div>
-                      <span className="text-[10px] text-muted-foreground">
-                        <span className="font-semibold text-secondary">
-                          SNOMED CT
-                        </span>{" "}
-                        terminology
-                      </span>
-                    </div>
-                    <span className="text-[9px] font-mono text-muted-foreground/60">
-                      FHIR R4
-                    </span>
+                  <div className="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                    {item.description}
                   </div>
                 </div>
               </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Keyboard Shortcuts Terminal — below both panels */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{
+            duration: 0.65,
+            delay: 0.3,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
+          className="mt-16 max-w-4xl mx-auto"
+        >
+          <div className="rounded-2xl bg-card border border-border shadow-elevated overflow-hidden">
+            {/* Terminal top bar */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-muted/60 border-b border-border">
+              <div className="h-3 w-3 rounded-full bg-destructive/60" />
+              <div className="h-3 w-3 rounded-full bg-accent/60" />
+              <div className="h-3 w-3 rounded-full bg-secondary/60" />
+              <span className="ml-2 text-xs font-mono text-muted-foreground">
+                Meiosis — Keyboard Shortcuts
+              </span>
+              <div className="ml-auto">
+                <Badge className="pill-badge text-accent border-accent/20">
+                  Customizable
+                </Badge>
+              </div>
             </div>
-          </motion.div>
-        </div>
+
+            {/* Shortcuts grid */}
+            <div className="p-6">
+              <p className="text-xs font-mono text-muted-foreground mb-6 tracking-wider uppercase">
+                Global Shortcuts
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {shortcuts.map((s, i) => (
+                  <motion.div
+                    key={s.key}
+                    initial={{ opacity: 0, x: 12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: 0.35 + i * 0.05,
+                      duration: 0.4,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    }}
+                    className="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-muted/60 transition-smooth group border border-border/30 hover:border-accent/30"
+                  >
+                    <span className="text-sm text-foreground font-medium group-hover:text-accent transition-smooth">
+                      {s.action}
+                    </span>
+                    <kbd className="inline-flex items-center gap-1 rounded-md bg-muted border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground shadow-sm">
+                      {s.key}
+                    </kbd>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-6 p-4 rounded-lg bg-primary/8 border border-primary/20 flex items-center gap-3">
+                <div className="h-2 w-2 rounded-full bg-accent animate-pulse flex-shrink-0" />
+                <span className="text-sm font-medium text-primary leading-relaxed">
+                  All shortcuts are fully customizable per specialty and personal workflow
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
