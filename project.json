@@ -1,0 +1,24 @@
+{
+  "overview": "A highly professional, visually stunning landing page for Meiosis Healthcare — an enterprise-grade EMR platform built for Indian clinics. Features dark/light mode toggle, comprehensive feature showcase covering keyboard-centric EMR, local-first privacy architecture, ABDM interoperability, AI-Scribe, and pricing tiers.",
+  "features": [
+    "Dark/light mode toggle with persistent preference",
+    "Hero section with strong CTA redirecting to the Meiosis app",
+    "Feature grid covering EMR, privacy, ABDM, and clinical tools",
+    "Pricing section with Standard and Enterprise tiers",
+    "Trust and compliance section",
+    "Smooth scroll navigation",
+    "Fully responsive design for mobile, tablet, and desktop",
+    "Healthcare-appropriate color palette with OKLCH tokens"
+  ],
+  "category": "healthcare-saas",
+  "tags": [
+    "healthcare",
+    "emr",
+    "india",
+    "abdm",
+    "landing-page",
+    "dark-mode",
+    "saas"
+  ],
+  "last_updated": "2026-04-12T19:20:58.164Z"
+}
