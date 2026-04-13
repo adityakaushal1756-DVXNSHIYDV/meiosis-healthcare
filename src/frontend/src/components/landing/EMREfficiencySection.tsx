@@ -234,7 +234,7 @@ function WorkflowOptimisationPanel() {
 
 export function EMREfficiencySection() {
   return (
-    <section id="emr" className="section-wrapper bg-muted/30 backdrop-blur-xl border-t border-white/5">
+    <section id="emr" className="section-wrapper bg-muted/30 border-t border-white/5">
       <div className="container mx-auto px-4">
         <div className="grid-2-col">
           {/* Left: Feature list */}

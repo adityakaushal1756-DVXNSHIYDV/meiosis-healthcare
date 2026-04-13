@@ -16,7 +16,7 @@ function DevTag() {
 
 export function FinalCTASection() {
   return (
-    <section className="section-wrapper bg-muted/30 backdrop-blur-xl border-t border-white/5 relative overflow-hidden">
+    <section className="section-wrapper bg-muted/30 border-t border-white/5 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full bg-primary/8 blur-[120px]" />
