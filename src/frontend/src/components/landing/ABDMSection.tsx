@@ -42,7 +42,7 @@ export function ABDMSection() {
               >
                 National Interoperability
               </Badge>
-              <Badge className="bg-accent/10 text-accent border-accent/25 text-xs font-bold px-4 py-1.5">
+              <Badge className="pill-badge text-accent border-accent/25">
                 ✦ ABDM Compliant
               </Badge>
             </div>
@@ -126,7 +126,7 @@ export function ABDMSection() {
                     Certified · Audited · Active
                   </div>
                 </div>
-                <Badge className="ml-auto bg-accent/10 text-accent border-accent/20 text-xs">
+                <Badge className="pill-badge text-accent border-accent/20 ml-auto">
                   Live
                 </Badge>
               </div>

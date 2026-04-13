@@ -313,7 +313,7 @@ export function EMREfficiencySection() {
                   Meiosis — Keyboard Shortcuts
                 </span>
                 <div className="ml-auto">
-                  <Badge className="bg-accent/10 text-accent border-accent/20 text-[10px] px-2 py-0.5">
+                  <Badge className="pill-badge text-accent border-accent/20">
                     Active
                   </Badge>
                 </div>
@@ -403,7 +403,7 @@ export function EMREfficiencySection() {
                     </p>
                     <Badge
                       variant="outline"
-                      className="text-[9px] px-1.5 py-0 border-secondary/30 text-secondary"
+                      className="pill-badge text-secondary border-secondary/30"
                     >
                       CT v3.0
                     </Badge>

@@ -114,7 +114,7 @@ export function FeaturesSection() {
                       </h3>
                       <Badge
                         variant="outline"
-                        className="text-xs px-2.5 py-1 border-secondary/30 text-secondary shrink-0"
+                        className="pill-badge text-secondary border-secondary/30"
                       >
                         {feature.badge}
                       </Badge>

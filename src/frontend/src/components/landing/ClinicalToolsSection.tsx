@@ -86,7 +86,7 @@ export function ClinicalToolsSection() {
                       </h3>
                       <Badge
                         variant="outline"
-                        className="text-[10px] px-1.5 py-0 border-accent/30 text-accent shrink-0"
+                        className="pill-badge text-accent border-accent/30"
                       >
                         {tool.tag}
                       </Badge>

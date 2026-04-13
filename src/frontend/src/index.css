@@ -188,10 +188,10 @@
   }
 
   .card-base {
-    @apply rounded-2xl border border-border/70 shadow-sm p-6 md:p-8 transition-all duration-300 hover:shadow-md;
-    background: oklch(var(--card) / 0.88);
-    backdrop-filter: blur(18px);
-    border: 1px solid oklch(var(--border) / 0.55);
+    @apply rounded-3xl border border-border/70 shadow-sm p-6 md:p-8 transition-all duration-300 hover:shadow-md;
+    background: oklch(var(--card) / 0.92);
+    backdrop-filter: blur(20px);
+    border: 1px solid oklch(var(--border) / 0.6);
     transform-style: preserve-3d;
     transform: translate3d(0, 0, 0);
     will-change: transform, box-shadow;
@@ -199,13 +199,36 @@
 
   .card-base:hover {
     transform: perspective(1200px) translate3d(0, -10px, 0) rotateX(0.45deg) rotateY(0.45deg);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
   }
 
   .dark .card-base {
-    background: oklch(var(--card) / 0.78);
-    backdrop-filter: blur(22px);
+    background: oklch(var(--card) / 0.82);
+    backdrop-filter: blur(24px);
+    border: 1px solid oklch(var(--border) / 0.38);
+  }
+
+  .glass-panel {
+    @apply rounded-3xl border border-border/40 bg-card/80 backdrop-blur-xl p-5 transition-all duration-300;
+    background: oklch(var(--card) / 0.88);
     border: 1px solid oklch(var(--border) / 0.35);
+  }
+
+  .glass-panel:hover {
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.16);
+  }
+
+  .pill-badge {
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold border transition-all duration-300;
+    background: oklch(var(--card) / 0.12);
+    border: 1px solid oklch(var(--border) / 0.2);
+    color: oklch(var(--foreground) / 0.92);
+  }
+
+  .dark .pill-badge {
+    background: oklch(var(--card) / 0.18);
+    border: 1px solid oklch(var(--border) / 0.26);
+    color: oklch(var(--foreground) / 0.9);
   }
 
   .card-base-glass {

@@ -171,7 +171,7 @@ export function HeroSection() {
                   delay: 0.56 + i * 0.08,
                   ease: [0.34, 1.56, 0.64, 1],
                 }}
-                className="text-center p-4 px-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 shadow-lg"
+                className="text-center p-4 px-6 rounded-3xl glass-panel"
               >
                 <div className="font-display text-2xl font-bold text-accent mb-1">
                   {stat.value}
