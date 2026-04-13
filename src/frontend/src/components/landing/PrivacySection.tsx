@@ -39,26 +39,26 @@ export function PrivacySection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="section-header"
+          className="section-header mb-20"
         >
           <Badge
             variant="outline"
-            className="badge-section mb-5"
+            className="badge-section mb-6"
           >
             Privacy & Sovereignty
           </Badge>
-          <h2 className="section-title">
-            Your Data. Your Clinic.{" "}
-            <span className="text-gradient-primary">Your Control.</span>
+          <h2 className="section-title mb-4">
+            Your Data. Your Clinic. Your Control.
           </h2>
+          <p className="section-subtitle">
+            Local-first architecture, on-premise AI
+          </p>
           <p className="section-description">
-            Most SaaS EMRs own your patient data. Meiosis doesn't. Local-first
-            architecture means patient records belong to your clinic — and your
-            patients.
+            Patient records stay on your clinic's hardware. Meiosis doesn't own your data — your patients and clinic do. Full offline capability, local LLM inference, and secure cloud sync when you need it.
           </p>
         </motion.div>
 
-        <div className="grid-features max-w-5xl mx-auto">
+        <div className="grid-features max-w-6xl mx-auto">
           {privacyCards.map((card, i) => (
             <motion.div
               key={card.title}
@@ -71,21 +71,23 @@ export function PrivacySection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              <Card className="card-base h-full flex flex-col items-center text-center">
-                <div className="h-16 w-16 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
+              <Card className="card-base h-full flex flex-col group hover:shadow-lg">
+                <div className="h-16 w-16 rounded-2xl bg-primary/15 flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md mx-auto">
                   <card.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="font-display font-semibold text-foreground text-lg mb-3">
+                <h3 className="font-display font-semibold text-foreground text-lg md:text-xl group-hover:text-accent transition-colors mb-3 text-center">
                   {card.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                <p className="text-sm md:text-base text-slate-600 dark:text-slate-350 leading-relaxed flex-1 text-center mb-6">
                   {card.description}
                 </p>
-                <Badge
-                  className={`mt-5 text-xs px-3 py-1 ${card.highlightColor}`}
-                >
-                  {card.highlight}
-                </Badge>
+                <div className="flex justify-center">
+                  <Badge
+                    className={`text-xs px-4 py-1.5 ${card.highlightColor}`}
+                  >
+                    {card.highlight}
+                  </Badge>
+                </div>
               </Card>
             </motion.div>
           ))}
@@ -101,15 +103,13 @@ export function PrivacySection() {
             delay: 0.3,
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
-          className="mt-12 max-w-3xl mx-auto rounded-2xl bg-muted/50 border border-border p-6 text-center"
+          className="mt-16 max-w-3xl mx-auto rounded-2xl glass-panel p-8 text-center"
         >
-          <p className="text-muted-foreground text-base leading-relaxed">
-            <span className="font-semibold text-foreground">
-              Designed for India's reality:
-            </span>{" "}
-            Low-bandwidth clinics in Rajasthan, high-volume practices in Mumbai,
-            and everything in between — Meiosis adapts to your infrastructure,
-            not the other way around.
+          <p className="text-slate-700 dark:text-slate-300 text-base md:text-lg leading-relaxed">
+            <span className="font-semibold text-foreground block mb-2">
+              Built for India's reality:
+            </span>
+            Low-bandwidth clinics in rural areas, high-volume practices in metros — Meiosis adapts to your infrastructure, not the other way around.
           </p>
         </motion.div>
       </div>

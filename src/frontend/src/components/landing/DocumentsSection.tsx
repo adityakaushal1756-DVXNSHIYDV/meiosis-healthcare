@@ -52,17 +52,20 @@ export function DocumentsSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="section-header"
+          className="section-header mb-20"
         >
           <h2 className="section-title">
             Legally Compliant Documentation
           </h2>
+          <p className="section-subtitle">
+            Every document, perfectly formatted
+          </p>
           <p className="section-description">
-            Every type of medical document, perfectly formatted and fully compliant with legal and regulatory standards.
+            Automated generation of all medical documents with full compliance to Indian medical regulations. From prescriptions to discharge notes, all MCI-aligned and audit-ready.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid-2-col">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -71,17 +74,21 @@ export function DocumentsSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="card-base h-full flex flex-col">
-                <div className="flex items-center gap-4 mb-4">
+              <Card className="card-base h-full flex flex-col group hover:shadow-lg">
+                <div className="flex items-start gap-4 mb-6">
                   <div className={`feature-icon ${feature.color}`}>
                     <feature.icon className="h-6 w-6" />
                   </div>
-                  <Badge variant="secondary" className="text-xs">
+                  <Badge variant="outline" className="pill-badge text-primary border-primary/30 mt-0.5">
                     {feature.badge}
                   </Badge>
                 </div>
-                <h3 className="font-display font-semibold text-foreground text-lg mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{feature.description}</p>
+                <h3 className="font-display font-semibold text-foreground text-lg md:text-xl group-hover:text-accent transition-colors mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-350 text-sm md:text-base leading-relaxed flex-1">
+                  {feature.description}
+                </p>
               </Card>
             </motion.div>
           ))}

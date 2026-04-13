@@ -62,20 +62,22 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="section-header"
+          className="section-header mb-16"
         >
           <Badge
             variant="outline"
-            className="badge-section mb-5"
+            className="badge-section mb-6"
           >
             Pricing
           </Badge>
-          <h2 className="section-title mb-6">
+          <h2 className="section-title mb-4">
             Simple, Transparent Pricing
           </h2>
+          <p className="section-subtitle">
+            No hidden fees. No surprises.
+          </p>
           <p className="section-description max-w-3xl mb-12">
-            Flat-fee subscription. No per-patient charges. No hidden fees. No
-            surprises.
+            Flat-fee subscription with no per-patient charges. One simple plan for single clinics, custom enterprise solutions for hospitals and networks.
           </p>
 
           {/* 3 Months Free Trial hero banner */}
@@ -88,29 +90,29 @@ export function PricingSection() {
               duration: 0.55,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-8 inline-flex items-center gap-3 px-6 py-3 rounded-2xl
-              bg-accent/15 border border-accent/40
+            className="mt-8 inline-flex items-center gap-4 px-6 py-4 rounded-2xl
+              bg-accent/12 border border-accent/40
               shadow-[0_0_32px_0px_rgba(16,185,129,0.25)]
-              relative overflow-hidden"
+              relative overflow-hidden group hover:bg-accent/15 transition-all"
           >
             {/* subtle shimmer line */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/10 to-transparent -skew-x-12 pointer-events-none" />
-            <div className="h-8 w-8 rounded-xl bg-accent/20 border border-accent/30 flex items-center justify-center flex-shrink-0">
-              <Gift className="h-4 w-4 text-accent" />
+            <div className="h-10 w-10 rounded-xl bg-accent/20 border border-accent/40 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+              <Gift className="h-5 w-5 text-accent" />
             </div>
             <div className="text-left">
               <div className="text-sm font-bold text-accent tracking-tight">
                 3 Months Free Trial
               </div>
-              <div className="text-xs text-muted-foreground">
-                No credit card required to start
+              <div className="text-xs text-slate-600 dark:text-slate-400">
+                No credit card required
               </div>
             </div>
-            <Sparkles className="h-4 w-4 text-accent/70 flex-shrink-0" />
+            <Sparkles className="h-5 w-5 text-accent/70 flex-shrink-0" />
           </motion.div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -132,7 +134,7 @@ export function PricingSection() {
               >
                 {plan.badgeText && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-primary text-primary-foreground px-4 py-1 text-xs font-semibold shadow-subtle">
+                    <Badge className="bg-primary text-primary-foreground px-5 py-1.5 text-xs font-bold shadow-subtle">
                       {plan.badgeText}
                     </Badge>
                   </div>
@@ -142,49 +144,51 @@ export function PricingSection() {
                 {plan.showTrialBadge && (
                   <div className="absolute -top-4 right-6">
                     <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold
                         bg-accent text-accent-foreground
-                        shadow-[0_0_18px_2px_rgba(16,185,129,0.45)]
+                        shadow-[0_0_20px_2px_rgba(16,185,129,0.5)]
                         ring-1 ring-accent/60"
                     >
-                      <Sparkles className="h-3 w-3" />3 Months Free
+                      <Sparkles className="h-3.5 w-3.5" />3 Months Free
                     </span>
                   </div>
                 )}
 
-                <div className="mb-6">
-                  <h3 className="font-display font-bold text-foreground text-2xl">
+                <div className="mb-8">
+                  <h3 className="font-display font-bold text-foreground text-2xl md:text-3xl">
                     {plan.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-2">
+                  <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 mt-3 font-medium">
                     {plan.description}
                   </p>
                 </div>
 
-                <div className="mb-8">
-                  <span className="font-display text-5xl font-bold text-foreground">
-                    {plan.price}
-                  </span>
-                  {plan.period && (
-                    <span className="text-muted-foreground text-base ml-2">
-                      {plan.period}
+                <div className="mb-10">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-display text-6xl font-bold text-foreground">
+                      {plan.price}
                     </span>
-                  )}
+                    {plan.period && (
+                      <span className="text-slate-600 dark:text-slate-400 text-lg">
+                        {plan.period}
+                      </span>
+                    )}
+                  </div>
                   {plan.price === "Custom" && (
-                    <p className="text-sm text-muted-foreground mt-2">
-                      Tailored for your scale
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-3 font-light">
+                      Scalable pricing for your organization
                     </p>
                   )}
                 </div>
 
-                <ul className="space-y-3 mb-8 flex-1">
+                <ul className="space-y-3 mb-10 flex-1">
                   {plan.features.map((f) => (
                     <li
                       key={f}
-                      className="flex items-start gap-3 text-sm text-muted-foreground"
+                      className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-350"
                     >
                       <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                      <span>{f}</span>
+                      <span className="leading-relaxed">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -197,13 +201,13 @@ export function PricingSection() {
                   <Button
                     className={`w-full font-semibold text-base py-6 rounded-xl transition-all duration-300 ${
                       plan.highlighted
-                        ? "bg-accent text-accent-foreground hover:bg-accent/90 shadow-xl hover:shadow-2xl"
+                        ? "bg-gradient-to-r from-accent to-accent/80 text-accent-foreground hover:shadow-2xl shadow-xl"
                         : "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl"
                     }`}
                     data-ocid={`pricing-cta-${plan.name.toLowerCase()}`}
                   >
                     {plan.cta}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </a>
               </Card>
@@ -211,17 +215,21 @@ export function PricingSection() {
           ))}
         </div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="text-center text-sm text-muted-foreground mt-12"
+          className="text-center mt-16 space-y-2"
         >
-          All plans include{" "}
-          <span className="font-semibold text-accent">3 months free trial</span>{" "}
-          · ABDM compliant from day one · No credit card required to start
-        </motion.p>
+          <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium">
+            ✓ All plans include{" "}
+            <span className="font-semibold text-accent">3 months free trial</span>
+          </p>
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-500">
+            ABDM compliant from day one · No credit card required · Setup in minutes
+          </p>
+        </motion.div>
       </div>
     </section>
   );

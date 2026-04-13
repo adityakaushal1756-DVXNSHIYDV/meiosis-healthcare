@@ -157,13 +157,13 @@
     background: oklch(var(--card) / 0.6);
   }
 
-  /* Modular Layout System */
+  /* Modular Layout System - Balanced Spacing */
   .section-wrapper {
-    @apply py-24 md:py-32 lg:py-40 xl:py-48 bg-background/50 dark:bg-background/30;
+    @apply py-20 md:py-28 lg:py-36 xl:py-44 bg-background/50 dark:bg-background/30 relative;
   }
 
   .section-wrapper-glass {
-    @apply py-24 md:py-32 lg:py-40 xl:py-48;
+    @apply py-20 md:py-28 lg:py-36 xl:py-44 relative;
     background: oklch(var(--card) / 0.35);
     backdrop-filter: blur(20px);
     border-top: 1px solid oklch(var(--border) / 0.2);
@@ -176,86 +176,143 @@
   }
 
   .section-header {
-    @apply text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-20;
+    @apply text-center max-w-4xl mx-auto mb-14 md:mb-18 lg:mb-24;
   }
 
   .section-title {
-    @apply font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1] text-foreground;
+    @apply font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-foreground;
+  }
+
+  .section-subtitle {
+    @apply font-display text-xl md:text-2xl font-semibold text-accent mt-3 mb-6;
   }
 
   .section-description {
-    @apply mt-5 text-lg md:text-xl text-muted-foreground dark:text-slate-200 leading-relaxed max-w-2xl mx-auto;
+    @apply mt-6 text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto font-light;
   }
 
   .card-base {
-    @apply rounded-3xl border border-border/70 shadow-sm p-6 md:p-8 transition-all duration-300 hover:shadow-md;
+    @apply rounded-3xl border shadow-sm p-6 md:p-8 transition-all duration-300 hover:shadow-lg;
     background: oklch(var(--card) / 0.92);
     backdrop-filter: blur(20px);
-    border: 1px solid oklch(var(--border) / 0.6);
+    border: 1px solid oklch(var(--border) / 0.65);
     transform-style: preserve-3d;
     transform: translate3d(0, 0, 0);
     will-change: transform, box-shadow;
+    position: relative;
   }
 
   .card-base:hover {
-    transform: perspective(1200px) translate3d(0, -10px, 0) rotateX(0.45deg) rotateY(0.45deg);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+    transform: perspective(1200px) translate3d(0, -12px, 0) rotateX(0.5deg) rotateY(0.5deg);
+    box-shadow: 0 32px 72px rgba(0, 0, 0, 0.28);
   }
 
   .dark .card-base {
-    background: oklch(var(--card) / 0.82);
+    background: oklch(var(--card) / 0.84);
     backdrop-filter: blur(24px);
-    border: 1px solid oklch(var(--border) / 0.38);
+    border: 1px solid oklch(var(--border) / 0.42);
   }
 
   .glass-panel {
-    @apply rounded-3xl border border-border/40 bg-card/80 backdrop-blur-xl p-5 transition-all duration-300;
+    @apply rounded-2xl border p-5 md:p-6 transition-all duration-300;
     background: oklch(var(--card) / 0.88);
     border: 1px solid oklch(var(--border) / 0.35);
+    backdrop-filter: blur(12px);
   }
 
   .glass-panel:hover {
-    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.16);
+    background: oklch(var(--card) / 0.92);
+    box-shadow: 0 20px 56px rgba(0, 0, 0, 0.18);
+  }
+
+  .dark .glass-panel {
+    background: oklch(var(--card) / 0.78);
+    border: 1px solid oklch(var(--border) / 0.32);
+  }
+
+  .dark .glass-panel:hover {
+    background: oklch(var(--card) / 0.82);
   }
 
   .pill-badge {
-    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold border transition-all duration-300;
+    @apply inline-flex items-center gap-2.5 rounded-full px-3.5 py-1.5 text-xs font-semibold border transition-all duration-300 whitespace-nowrap;
     background: oklch(var(--card) / 0.12);
-    border: 1px solid oklch(var(--border) / 0.2);
-    color: oklch(var(--foreground) / 0.92);
+    border: 1px solid oklch(var(--border) / 0.22);
+    color: oklch(var(--foreground) / 0.88);
+  }
+
+  .pill-badge:hover {
+    background: oklch(var(--card) / 0.18);
+    border: 1px solid oklch(var(--border) / 0.32);
   }
 
   .dark .pill-badge {
-    background: oklch(var(--card) / 0.18);
-    border: 1px solid oklch(var(--border) / 0.26);
-    color: oklch(var(--foreground) / 0.9);
+    background: oklch(var(--card) / 0.2);
+    border: 1px solid oklch(var(--border) / 0.28);
+    color: oklch(var(--foreground) / 0.92);
   }
 
-  .card-base-glass {
-    @apply rounded-lg border border-white/5 bg-background backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:bg-background hover:shadow-subtle;
+  .badge-section {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[11px] font-bold tracking-widest uppercase bg-accent/12 border border-accent/30 text-accent transition-all duration-300;
   }
 
+  .badge-section:hover {
+    background: oklch(var(--accent) / 0.15);
+    border: oklch(var(--accent) / 0.45);
+  }
+
+  /* Grid Layouts */
   .grid-features {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10;
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-9;
   }
 
   .grid-2-col {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12;
+    @apply grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-11;
   }
 
+  .grid-trust {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-6;
+  }
+
+  /* CTA Buttons */
   .cta-primary {
     @apply px-8 py-3 font-semibold rounded-xl bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2;
   }
 
   .cta-secondary {
-    @apply px-8 py-3 font-semibold rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:bg-card hover:border-primary/30 transition-all duration-300 inline-flex items-center gap-2;
+    @apply px-8 py-3 font-semibold rounded-xl border-2 border-border bg-card/60 backdrop-blur-sm hover:bg-card hover:border-accent/50 transition-all duration-300 inline-flex items-center gap-2;
   }
 
-  .badge-section {
-    @apply inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold tracking-wide uppercase bg-accent/10 border border-accent/25 text-accent;
-  }
-
+  /* Feature Icons - Enhanced */
   .feature-icon {
-    @apply w-12 h-12 rounded-xl bg-gradient-to-br from-accent/15 to-primary/10 border border-accent/20 flex items-center justify-center text-accent p-2.5 shadow-sm;
+    @apply w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-primary/15 border border-accent/30 flex items-center justify-center text-accent p-3 shadow-sm flex-shrink-0 transition-all duration-300;
+  }
+
+  .group:hover .feature-icon {
+    @apply scale-110 shadow-md;
+  }
+
+  /* Trust Badge Icons */
+  .trust-icon {
+    @apply h-7 w-7 transition-all duration-300;
+  }
+
+  .group:hover .trust-icon {
+    @apply scale-125;
+  }
+
+  /* Content Text Utilities */
+  .text-content-lg {
+    @apply text-lg md:text-xl font-medium text-foreground leading-relaxed;
+  }
+
+  .text-content-md {
+    @apply text-base md:text-lg text-slate-600 dark:text-slate-350 leading-relaxed;
+  }
+
+  /* Gradient Text Utilities */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
   }
 }
+

@@ -19,8 +19,8 @@ export function FinalCTASection() {
     <section className="section-wrapper-glass relative overflow-hidden border-t border-white/5">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full bg-primary/8 blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-accent/6 blur-[80px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-accent/8 blur-[80px]" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
@@ -32,17 +32,16 @@ export function FinalCTASection() {
         >
           <Badge
             variant="outline"
-            className="badge-section mb-6"
+            className="badge-section mb-8"
           >
             Get Started Today
           </Badge>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-8">
-            Ready to Transform{" "}
-            <span className="text-gradient-primary block">Your Practice?</span>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-8">
+            Ready to Transform <br className="hidden md:inline" />
+            <span className="text-gradient-primary">Your Practice?</span>
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12 max-w-3xl mx-auto">
-            Start delivering faster, smarter care with Meiosis. Begin your free
-            trial — no credit card required, ABDM compliant from day one.
+          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-14 max-w-3xl mx-auto font-light">
+            Start delivering faster, smarter care with Meiosis. Free trial, ABDM compliant from day one.
           </p>
 
           {/* 3 Months Free Trial — prominent pill badge */}
@@ -55,14 +54,14 @@ export function FinalCTASection() {
               duration: 0.55,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mb-10 flex justify-center"
+            className="mb-12 flex justify-center"
           >
             <div
-              className="inline-flex flex-col sm:flex-row items-center gap-3 px-6 sm:px-8 py-4 rounded-2xl sm:rounded-full
+              className="inline-flex flex-col sm:flex-row items-center gap-4 px-6 sm:px-10 py-5 rounded-2xl sm:rounded-full
                 bg-gradient-to-r from-accent/20 via-accent/15 to-accent/20
                 border border-accent/50
                 shadow-[0_0_48px_0px_rgba(16,185,129,0.35),0_0_12px_0px_rgba(16,185,129,0.2)]
-                relative overflow-hidden"
+                relative overflow-hidden group hover:shadow-[0_0_56px_0px_rgba(16,185,129,0.45)] transition-all"
             >
               {/* animated shimmer */}
               <motion.div
@@ -75,16 +74,16 @@ export function FinalCTASection() {
                 }}
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent -skew-x-12 pointer-events-none"
               />
-              <Sparkles className="h-5 w-5 text-accent flex-shrink-0" />
+              <Sparkles className="h-6 w-6 text-accent flex-shrink-0" />
               <div className="text-center sm:text-left">
-                <div className="text-sm sm:text-base font-bold text-accent tracking-tight leading-tight">
+                <div className="text-base sm:text-lg font-bold text-accent tracking-tight leading-tight">
                   3 Months Free — No Credit Card Required
                 </div>
-                <div className="text-sm text-muted-foreground mt-1">
-                  Full access to all Standard features during your trial
+                <div className="text-sm text-slate-600 dark:text-slate-400 mt-1.5 font-light">
+                  Full access to all Standard features during trial
                 </div>
               </div>
-              <Sparkles className="h-5 w-5 text-accent/60 flex-shrink-0" />
+              <Sparkles className="h-6 w-6 text-accent/60 flex-shrink-0" />
             </div>
           </motion.div>
 
@@ -97,7 +96,7 @@ export function FinalCTASection() {
               duration: 0.5,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="flex flex-col sm:flex-row justify-center gap-4"
+            className="flex flex-col sm:flex-row justify-center gap-4 mb-8"
           >
             <a
               href={`${AUTH_URL}/signup`}
@@ -106,7 +105,7 @@ export function FinalCTASection() {
             >
               <Button
                 size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-10 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                className="bg-gradient-to-r from-accent to-accent/80 text-accent-foreground hover:shadow-2xl font-semibold text-base px-10 py-6 shadow-xl transition-all duration-300 rounded-xl"
                 data-ocid="final-cta-primary"
               >
                 Start Free Trial
@@ -117,7 +116,7 @@ export function FinalCTASection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="font-semibold text-lg px-10 py-6 border-2 border-border hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 rounded-xl"
+                className="font-semibold text-base px-10 py-6 border-2 border-slate-300 dark:border-slate-600 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 rounded-xl"
                 data-ocid="final-cta-signin"
               >
                 Sign In to Dashboard
@@ -125,28 +124,30 @@ export function FinalCTASection() {
             </a>
           </motion.div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.4 }}
-            className="mt-6 text-sm text-muted-foreground"
+            className="space-y-4"
           >
-            <span className="font-semibold text-accent">
-              3 months free trial
-            </span>{" "}
-            · No credit card required · ABDM compliant from day one
-          </motion.p>
+            <p className="text-sm text-slate-600 dark:text-slate-400 font-light">
+              ✓ <span className="font-semibold text-accent">
+                3 months free
+              </span>{" "}
+              · No credit card · ABDM compliant from day one
+            </p>
 
-          {/* Currently Under Development tag at page bottom */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.45 }}
-            className="mt-10 flex justify-center"
-          >
-            <DevTag />
+            {/* Currently Under Development tag at page bottom */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.45 }}
+              className="flex justify-center"
+            >
+              <DevTag />
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

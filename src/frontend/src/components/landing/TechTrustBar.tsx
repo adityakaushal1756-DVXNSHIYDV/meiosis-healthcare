@@ -12,12 +12,12 @@ const techStack = [
 
 export function TechTrustBar() {
   return (
-    <section className="section-wrapper-glass border-y border-white/5 py-20 lg:py-24">
+    <section className="section-wrapper-glass border-y border-white/5 py-20 lg:py-28">
       <div className="container mx-auto px-4">
-        <p className="text-center text-sm font-semibold tracking-widest uppercase text-muted-foreground mb-12">
-          Powered by enterprise-grade technology
+        <p className="text-center text-xs md:text-sm font-bold tracking-widest uppercase text-slate-600 dark:text-slate-500 mb-14">
+          Enterprise-Grade Technology Stack
         </p>
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
           {techStack.map((tech, i) => (
             <motion.div
               key={tech.label}
@@ -25,12 +25,12 @@ export function TechTrustBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.07 }}
-              className="flex flex-col items-center gap-3 text-center group"
+              className="flex flex-col items-center gap-4 text-center group"
             >
-              <div className="h-14 w-14 rounded-2xl bg-card/80 border border-border/50 flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300">
-                <tech.icon className="h-6 w-6 text-accent group-hover:text-accent/80 transition-colors" />
+              <div className="h-16 w-16 rounded-2xl bg-card/80 border border-border/50 flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:bg-card/95 transition-all duration-300">
+                <tech.icon className="h-7 w-7 text-accent group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="text-sm md:text-base font-semibold text-slate-700 dark:text-slate-300 group-hover:text-accent transition-colors leading-snug">
                 {tech.label}
               </span>
             </motion.div>

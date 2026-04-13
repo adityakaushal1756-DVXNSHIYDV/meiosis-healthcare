@@ -57,24 +57,23 @@ export function TrustSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="section-header mb-16"
+          className="section-header mb-20"
         >
           <Badge
             variant="outline"
-            className="badge-section mb-5"
+            className="badge-section mb-6"
           >
             Compliance & Security
           </Badge>
-          <h2 className="section-title">
+          <h2 className="section-title mb-4">
             Trusted. Compliant. Secure.
           </h2>
-          <p className="section-description">
-            Every architectural decision in Meiosis was made with clinical
-            compliance and patient trust at the center.
+          <p className="section-description max-w-3xl">
+            Every architectural decision in Meiosis was made with clinical compliance and patient trust at the center. Built to meet India's most rigorous healthcare standards.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+        <div className="grid-trust max-w-6xl mx-auto">
           {trustBadges.map((badge, i) => (
             <motion.div
               key={badge.label}
@@ -86,17 +85,17 @@ export function TrustSection() {
                 duration: 0.5,
                 ease: [0.34, 1.56, 0.64, 1],
               }}
-              className="card-base flex flex-col items-center text-center"
+              className="card-base flex flex-col items-center text-center group hover:shadow-lg"
             >
               <div
-                className={`h-12 w-12 rounded-xl border flex items-center justify-center mb-4 transition-smooth ${badge.color}`}
+                className={`h-14 w-14 rounded-2xl border flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 ${badge.color}`}
               >
-                <badge.icon className="h-6 w-6" />
+                <badge.icon className="h-7 w-7 trust-icon" />
               </div>
-              <div className="font-display font-semibold text-foreground text-sm">
+              <div className="font-display font-semibold text-foreground text-sm md:text-base">
                 {badge.label}
               </div>
-              <div className="text-xs text-muted-foreground mt-2 leading-tight">
+              <div className="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-tight font-light">
                 {badge.description}
               </div>
             </motion.div>

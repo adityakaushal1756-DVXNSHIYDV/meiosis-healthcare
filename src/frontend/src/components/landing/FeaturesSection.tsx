@@ -70,7 +70,7 @@ export function FeaturesSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="section-header mb-16"
+          className="section-header mb-20"
         >
           <Badge
             variant="outline"
@@ -78,12 +78,14 @@ export function FeaturesSection() {
           >
             The Meiosis Ecosystem
           </Badge>
-          <h2 className="section-title mb-6">
+          <h2 className="section-title mb-4">
             Everything Your Clinic Needs
           </h2>
-          <p className="section-description max-w-3xl">
-            Built from first principles for Indian healthcare — privacy-first,
-            keyboard-fast, natively ABDM-compliant.
+          <p className="section-subtitle">
+            Purpose-built for speed and compliance
+          </p>
+          <p className="section-description">
+            Built from first principles for Indian healthcare — privacy-first, keyboard-fast, natively ABDM-compliant. Every feature engineered to reduce administrative overhead and maximize patient throughput.
           </p>
         </motion.div>
 
@@ -100,29 +102,27 @@ export function FeaturesSection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              <Card className="card-base h-full group hover:shadow-xl transition-all duration-300">
-                <div className="flex items-start gap-5">
+              <Card className="card-base h-full group hover:shadow-xl transition-all duration-300 flex flex-col">
+                <div className="flex items-start gap-5 mb-6">
                   <div
-                    className={`feature-icon flex-shrink-0 ${feature.color} group-hover:scale-110 transition-transform duration-300`}
+                    className={`feature-icon ${feature.color}`}
                   >
                     <feature.icon className="h-6 w-6" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-4">
-                      <h3 className="font-display font-semibold text-foreground text-xl group-hover:text-accent transition-colors">
-                        {feature.title}
-                      </h3>
-                      <Badge
-                        variant="outline"
-                        className="pill-badge text-secondary border-secondary/30"
-                      >
-                        {feature.badge}
-                      </Badge>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed text-base">
-                      {feature.description}
-                    </p>
-                  </div>
+                  <Badge
+                    variant="outline"
+                    className="pill-badge text-secondary border-secondary/30 mt-0.5"
+                  >
+                    {feature.badge}
+                  </Badge>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-foreground text-lg md:text-xl group-hover:text-accent transition-colors mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-350 leading-relaxed text-sm md:text-base">
+                    {feature.description}
+                  </p>
                 </div>
               </Card>
             </motion.div>

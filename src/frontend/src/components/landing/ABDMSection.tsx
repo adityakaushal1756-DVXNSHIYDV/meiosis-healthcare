@@ -27,7 +27,7 @@ export function ABDMSection() {
   return (
     <section id="abdm" className="section-wrapper-glass border-t border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid-2-col items-center">
+        <div className="grid-2-col items-center gap-12">
           {/* Left: Content */}
           <motion.div
             initial={{ opacity: 0, x: -40, scale: 0.97 }}
@@ -35,31 +35,28 @@ export function ABDMSection() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="flex flex-wrap items-center gap-3 mb-6">
+            <div className="flex flex-wrap items-center gap-3 mb-8">
               <Badge
                 variant="outline"
                 className="badge-section"
               >
                 National Interoperability
               </Badge>
-              <Badge className="pill-badge text-accent border-accent/25">
+              <Badge className="pill-badge text-accent border-accent/30">
                 ✦ ABDM Compliant
               </Badge>
             </div>
 
-            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.15] mb-6">
               Built for India's{" "}
               <span className="text-gradient-primary">Digital Health</span>{" "}
               Mission
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Meiosis is fully aligned with the Ayushman Bharat Digital Mission
-              (ABDM). From ABHA Health ID creation to nationwide longitudinal
-              record access, we handle every touchpoint of India's national
-              digital health infrastructure.
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-10 font-light">
+              Fully aligned with ABDM. From ABHA Health ID creation to nationwide longitudinal record access, we handle every touchpoint of India's national digital health infrastructure.
             </p>
 
-            <ul className="space-y-4">
+            <ul className="space-y-3.5 mb-12">
               {abdmFeatures.map((item, i) => (
                 <motion.li
                   key={item}
@@ -71,10 +68,10 @@ export function ABDMSection() {
                     duration: 0.45,
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
-                  className="flex items-center gap-3 text-base text-foreground"
+                  className="flex items-start gap-3 text-base md:text-lg text-foreground leading-relaxed"
                 >
-                  <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
-                  {item}
+                  <CheckCircle2 className="h-6 w-6 text-accent flex-shrink-0 mt-0.5" />
+                  <span>{item}</span>
                 </motion.li>
               ))}
             </ul>
@@ -92,11 +89,11 @@ export function ABDMSection() {
                 rel="noopener noreferrer"
               >
                 <Button
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                  className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:shadow-2xl font-semibold text-base px-8 py-5 shadow-xl transition-all duration-300 rounded-xl"
                   data-ocid="abdm-cta"
                 >
                   Get ABDM-Ready Today
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </a>
             </motion.div>

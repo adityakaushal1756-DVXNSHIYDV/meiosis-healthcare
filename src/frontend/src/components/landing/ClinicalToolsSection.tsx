@@ -43,25 +43,26 @@ export function ClinicalToolsSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="section-header"
+          className="section-header mb-20"
         >
           <Badge
             variant="outline"
-            className="badge-section mb-5"
+            className="badge-section mb-6"
           >
             Specialized Tools
           </Badge>
-          <h2 className="section-title">
-            Powerful Tools for{" "}
-            <span className="text-gradient-primary">Modern Clinics</span>
+          <h2 className="section-title mb-4">
+            Powerful Tools for Modern Clinics
           </h2>
+          <p className="section-subtitle">
+            Beyond the EMR core
+          </p>
           <p className="section-description">
-            Beyond the EMR core — specialized modules that handle every
-            dimension of modern clinical practice.
+            Specialized modules handle every dimension of modern clinical practice — from queue management to AI-powered note taking, all integrated into your workflow.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
+        <div className="grid-2-col max-w-6xl mx-auto">
           {clinicalTools.map((tool, i) => (
             <motion.div
               key={tool.title}
@@ -74,28 +75,24 @@ export function ClinicalToolsSection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              <Card className="card-base h-full">
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 transition-smooth">
-                    <tool.icon className="h-6 w-6 text-primary" />
+              <Card className="card-base h-full group hover:shadow-lg">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="h-14 w-14 rounded-2xl bg-primary/15 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
+                    <tool.icon className="h-7 w-7 text-primary" />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="font-display font-semibold text-foreground text-base">
-                        {tool.title}
-                      </h3>
-                      <Badge
-                        variant="outline"
-                        className="pill-badge text-accent border-accent/30"
-                      >
-                        {tool.tag}
-                      </Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {tool.description}
-                    </p>
-                  </div>
+                  <Badge
+                    variant="outline"
+                    className="pill-badge text-accent border-accent/30 mt-0.5"
+                  >
+                    {tool.tag}
+                  </Badge>
                 </div>
+                <h3 className="font-display font-semibold text-foreground text-lg md:text-xl group-hover:text-accent transition-colors mb-3">
+                  {tool.title}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-350 text-sm md:text-base leading-relaxed">
+                  {tool.description}
+                </p>
               </Card>
             </motion.div>
           ))}

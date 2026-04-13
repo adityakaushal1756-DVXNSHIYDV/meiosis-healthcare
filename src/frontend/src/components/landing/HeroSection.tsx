@@ -29,19 +29,19 @@ export function HeroSection() {
     >
       {/* Background radial gradients */}
       <div className="absolute inset-0 pointer-events-none select-none">
-        <div className="absolute top-0 left-1/4 w-[700px] h-[700px] rounded-full bg-primary/8 blur-[140px] -translate-y-1/3" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-secondary/8 blur-[120px] translate-y-1/4" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px]" />
+        <div className="absolute top-0 left-1/4 w-[700px] h-[700px] rounded-full bg-primary/10 blur-[140px] -translate-y-1/3" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-secondary/10 blur-[120px] translate-y-1/4" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-accent/8 blur-[80px]" />
       </div>
 
-      <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20 relative z-10 flex justify-center">
-        <div className="max-w-2xl text-center">
+      <div className="container mx-auto px-4 py-16 md:py-20 lg:py-24 relative z-10 flex justify-center">
+        <div className="max-w-3xl text-center">
           {/* Currently Under Development tag */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mb-4"
+            className="mb-6"
           >
             <DevTag />
           </motion.div>
@@ -55,8 +55,8 @@ export function HeroSection() {
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
           >
-            <Badge className="mb-5 bg-accent/10 text-accent border-accent/25 font-semibold text-xs px-3.5 py-1.5 tracking-wide">
-              ✦ ABDM Certification Upcoming &nbsp;·&nbsp; SNOMED CT Integrated
+            <Badge className="mb-6 bg-accent/12 text-accent border border-accent/30 font-semibold text-xs px-4 py-2 tracking-widest uppercase">
+              ✦ ABDM Certification Upcoming ·  SNOMED CT Integrated
             </Badge>
           </motion.div>
 
@@ -68,14 +68,12 @@ export function HeroSection() {
               delay: 0.12,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="font-display text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] mb-2"
+            className="font-display text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-4"
           >
             <span className="text-gradient-primary block">
-              The Future of
-              <br />
-              Clinical Care
+              The Future of Clinical Care
             </span>
-            <span className="text-foreground block mt-2">
+            <span className="text-foreground block mt-3">
               in India
             </span>
           </motion.h1>
@@ -88,12 +86,10 @@ export function HeroSection() {
               delay: 0.22,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-6 text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl"
+            className="mt-8 text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto font-light"
           >
-            Keyboard-efficient, local-first, and fully ABDM-aligned EMR built
-            for the speed and complexity of modern Indian clinics. See{" "}
-            <span className="font-semibold text-accent">40% more patients</span>{" "}
-            without sacrificing care quality.
+            Keyboard-efficient, local-first EMR built for the speed and complexity of modern Indian clinics. See{" "}
+            <span className="font-semibold text-accent">40% more patients</span> without sacrificing care quality. ABDM-aligned, SNOMED CT integrated, built for you.
           </motion.p>
 
           <motion.div
@@ -104,7 +100,7 @@ export function HeroSection() {
               delay: 0.32,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
               href={`${AUTH_URL}/signup`}
@@ -113,7 +109,7 @@ export function HeroSection() {
             >
               <Button
                 size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                className="bg-gradient-to-r from-accent to-accent/80 text-accent-foreground hover:shadow-2xl font-semibold text-base px-8 py-5 shadow-xl transition-all duration-300 rounded-xl"
                 data-ocid="hero-cta-primary"
               >
                 Get Started Free
@@ -128,7 +124,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="font-semibold text-lg px-8 py-4 border-2 border-border hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 rounded-xl"
+                className="font-semibold text-base px-8 py-5 border-2 border-slate-300 dark:border-slate-600 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 rounded-xl"
                 data-ocid="hero-cta-demo"
               >
                 <Play className="mr-2 h-5 w-5" />
@@ -141,16 +137,15 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.44 }}
-            className="mt-3 text-xs text-muted-foreground"
+            className="mt-4 text-xs text-slate-500 dark:text-slate-400"
           >
-            Redirects to{" "}
-            <span className="font-mono text-primary/70">
+            No credit card required · Hosting at{" "}
+            <span className="font-mono text-primary/70 font-semibold">
               meiosis-healthcare.vercel.app
-            </span>{" "}
-            · No credit card required
+            </span>
           </motion.p>
 
-          {/* Stats Row — only kept non-count stats */}
+          {/* Stats Row — Performance Metrics */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -159,28 +154,35 @@ export function HeroSection() {
               delay: 0.5,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-              className="mt-12 flex gap-4 justify-center"
+            className="mt-16 flex flex-col gap-4 justify-center max-w-2xl mx-auto"
           >
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 16, scale: 0.92 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  duration: 0.45,
-                  delay: 0.56 + i * 0.08,
-                  ease: [0.34, 1.56, 0.64, 1],
-                }}
-                className="text-center p-4 px-6 rounded-3xl glass-panel"
-              >
-                <div className="font-display text-2xl font-bold text-accent mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            <div className="text-center mb-2">
+              <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+                Trusted by Forward-Thinking Clinics
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 16, scale: 0.92 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.56 + i * 0.08,
+                    ease: [0.34, 1.56, 0.64, 1],
+                  }}
+                  className="text-center p-5 px-6 md:p-6 rounded-2xl glass-panel hover:shadow-lg"
+                >
+                  <div className="font-display text-3xl md:text-4xl font-bold text-accent mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs md:text-sm text-slate-600 dark:text-slate-400 font-semibold">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
