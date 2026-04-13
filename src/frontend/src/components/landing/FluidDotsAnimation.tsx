@@ -105,7 +105,7 @@ const BREATHE_AMP = 0.03;
 // scrollY * SCROLL_ROT_FACTOR = radians of whole-animation rotation
 const SCROLL_ROT_FACTOR = 0.0015;
 const ENTER_DURATION = 1200;
-const INITIAL_CENTER_X_RATIO = 0.86;
+const INITIAL_CENTER_X_RATIO = 0.95;
 const FINAL_CENTER_X_RATIO = 0.5;
 
 function easeOutCubic(t: number) {
@@ -177,8 +177,7 @@ export function FluidDotsAnimation() {
       const delta = newY - lastScrollYRef.current;
 
       if (Math.abs(delta) > 0.5) {
-        const direction = Math.random() > 0.5 ? 1 : -1;
-        globalRotationRef.current += delta * SCROLL_ROT_FACTOR * direction;
+        globalRotationRef.current += delta * SCROLL_ROT_FACTOR;
         globalRotationRef.current %= Math.PI * 2;
       }
 
@@ -224,7 +223,7 @@ export function FluidDotsAnimation() {
           (FINAL_CENTER_X_RATIO - INITIAL_CENTER_X_RATIO) * enterEase);
       const cy = h / 2;
 
-      // Global rotation driven by scroll position, with random direction changes
+      // Global rotation driven by scroll position
       const globalRotation = globalRotationRef.current;
 
       // Advance per-ring rotation offsets
@@ -241,8 +240,8 @@ export function FluidDotsAnimation() {
         const col = palette[ri];
         const baseDotR = DOT_RADII[ri];
 
-        // Effective tilt = per-ring tilt + global scroll rotation
-        const tiltRad = (def.tiltDeg * Math.PI) / 180 + globalRotation;
+        // Effective tilt = per-ring tilt
+        const tiltRad = (def.tiltDeg * Math.PI) / 180;
 
         const ryBase = def.ryBase * breathe;
         // Atom-style flat ellipse: semi-major = ryBase * H_STRETCH,
@@ -258,13 +257,16 @@ export function FluidDotsAnimation() {
         const sinFrame = Math.sin(tiltRad);
         const cosFrame = Math.cos(tiltRad);
 
+        const vRot = globalRotation * (ri % 2 === 0 ? 1 : -1);
+
         for (const dot of ring) {
           const angle = dot.baseAngle + rotOff + dot.displace;
 
           // Natural position on tilted ellipse in screen space
           // The ellipse is drawn in the ring's own frame then rotated into screen space
           const lx = rx * Math.cos(angle);
-          const ly = ry * Math.sin(angle);
+          const ly_raw = ry * Math.sin(angle);
+          const ly = ly_raw * Math.cos(vRot);
           const px0 = cx + lx * cosFrame - ly * sinFrame;
           const py0 = cy + lx * sinFrame + ly * cosFrame;
 
