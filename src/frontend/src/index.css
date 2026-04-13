@@ -64,7 +64,7 @@
     --secondary: 0.65 0.14 180;
     --secondary-foreground: 0.92 0 0;
     --muted: 0.24 0 0;
-    --muted-foreground: 0.68 0 0;
+    --muted-foreground: 0.76 0 0;
 
     --accent: 0.72 0.2 150;
     --accent-foreground: 0.13 0 0;
@@ -184,7 +184,7 @@
   }
 
   .section-description {
-    @apply mt-5 text-lg md:text-xl text-muted-foreground dark:text-slate-300 leading-relaxed max-w-2xl mx-auto;
+    @apply mt-5 text-lg md:text-xl text-muted-foreground dark:text-slate-200 leading-relaxed max-w-2xl mx-auto;
   }
 
   .card-base {
