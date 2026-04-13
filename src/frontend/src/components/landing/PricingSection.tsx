@@ -55,25 +55,25 @@ const plans = [
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-24 bg-muted/30 backdrop-blur-xl border-t border-white/5">
+    <section id="pricing" className="section-wrapper bg-muted/30 backdrop-blur-xl border-t border-white/5">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 36, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="section-header"
         >
           <Badge
             variant="outline"
-            className="mb-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase text-primary border-primary/30 bg-primary/5"
+            className="badge-section mb-5"
           >
             Pricing
           </Badge>
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+          <h2 className="section-title">
             Simple, Transparent Pricing
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
+          <p className="section-description">
             Flat-fee subscription. No per-patient charges. No hidden fees. No
             surprises.
           </p>
@@ -88,7 +88,7 @@ export function PricingSection() {
               duration: 0.55,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-7 inline-flex items-center gap-3 px-6 py-3 rounded-2xl
+            className="mt-8 inline-flex items-center gap-3 px-6 py-3 rounded-2xl
               bg-accent/15 border border-accent/40
               shadow-[0_0_32px_0px_rgba(16,185,129,0.25)]
               relative overflow-hidden"
@@ -110,7 +110,7 @@ export function PricingSection() {
           </motion.div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-3xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -124,15 +124,15 @@ export function PricingSection() {
               }}
             >
               <Card
-                className={`h-full flex flex-col p-7 relative transition-smooth ${
+                className={`card-base h-full flex flex-col relative ${
                   plan.highlighted
-                    ? "border-primary bg-card shadow-elevated ring-2 ring-primary/25"
-                    : "border-border bg-card hover:shadow-elevated"
+                    ? "border-primary ring-2 ring-primary/25"
+                    : ""
                 }`}
               >
                 {plan.badgeText && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold shadow-subtle">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <Badge className="bg-primary text-primary-foreground px-4 py-1 text-xs font-semibold shadow-subtle">
                       {plan.badgeText}
                     </Badge>
                   </div>
@@ -140,7 +140,7 @@ export function PricingSection() {
 
                 {/* 3 Months Free Trial badge on the Standard card */}
                 {plan.showTrialBadge && (
-                  <div className="absolute -top-3.5 right-4">
+                  <div className="absolute -top-4 right-6">
                     <span
                       className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold
                         bg-accent text-accent-foreground
@@ -152,38 +152,38 @@ export function PricingSection() {
                   </div>
                 )}
 
-                <div className="mb-5">
-                  <h3 className="font-display font-bold text-foreground text-xl">
+                <div className="mb-6">
+                  <h3 className="font-display font-bold text-foreground text-2xl">
                     {plan.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-muted-foreground mt-2">
                     {plan.description}
                   </p>
                 </div>
 
-                <div className="mb-7">
-                  <span className="font-display text-4xl font-bold text-foreground">
+                <div className="mb-8">
+                  <span className="font-display text-5xl font-bold text-foreground">
                     {plan.price}
                   </span>
                   {plan.period && (
-                    <span className="text-muted-foreground text-base ml-1.5">
+                    <span className="text-muted-foreground text-base ml-2">
                       {plan.period}
                     </span>
                   )}
                   {plan.price === "Custom" && (
-                    <p className="text-sm text-muted-foreground mt-1">
+                    <p className="text-sm text-muted-foreground mt-2">
                       Tailored for your scale
                     </p>
                   )}
                 </div>
 
-                <ul className="space-y-2.5 mb-8 flex-1">
+                <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((f) => (
                     <li
                       key={f}
-                      className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                      className="flex items-start gap-3 text-sm text-muted-foreground"
                     >
-                      <CheckCircle2 className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -195,7 +195,7 @@ export function PricingSection() {
                   rel="noopener noreferrer"
                 >
                   <Button
-                    className={`w-full font-semibold text-sm py-5 ${
+                    className={`w-full font-semibold text-base py-6 ${
                       plan.highlighted
                         ? "bg-accent text-accent-foreground hover:bg-accent/90 shadow-elevated"
                         : "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -216,7 +216,7 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="text-center text-xs text-muted-foreground mt-8"
+          className="text-center text-sm text-muted-foreground mt-12"
         >
           All plans include{" "}
           <span className="font-semibold text-accent">3 months free trial</span>{" "}

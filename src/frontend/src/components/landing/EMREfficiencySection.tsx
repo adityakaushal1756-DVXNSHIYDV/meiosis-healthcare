@@ -234,9 +234,9 @@ function WorkflowOptimisationPanel() {
 
 export function EMREfficiencySection() {
   return (
-    <section id="emr" className="py-24 bg-muted/30 backdrop-blur-xl border-t border-white/5">
+    <section id="emr" className="section-wrapper bg-muted/30 backdrop-blur-xl border-t border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid-2-col">
           {/* Left: Feature list */}
           <motion.div
             initial={{ opacity: 0, x: -40, scale: 0.97 }}
@@ -246,21 +246,21 @@ export function EMREfficiencySection() {
           >
             <Badge
               variant="outline"
-              className="mb-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase text-primary border-primary/30 bg-primary/5"
+              className="badge-section mb-6"
             >
               EMR Efficiency
             </Badge>
-            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
               Built for{" "}
               <span className="text-gradient-primary">Clinical Efficiency</span>
             </h2>
-            <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-10">
               Traditional EMRs were designed for compliance, not speed. Meiosis
               was designed for the doctor — every interaction optimized to
               reduce cognitive load and administrative friction.
             </p>
 
-            <ul className="mt-8 space-y-5">
+            <ul className="space-y-6">
               {emrFeatures.map((item, i) => (
                 <motion.li
                   key={item.title}

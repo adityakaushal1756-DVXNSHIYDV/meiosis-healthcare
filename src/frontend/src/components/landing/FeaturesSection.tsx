@@ -63,31 +63,31 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-24 bg-background/80 backdrop-blur-xl border-t border-white/5">
+    <section id="features" className="section-wrapper bg-background/80 backdrop-blur-xl border-t border-white/5">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 36, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="section-header"
         >
           <Badge
             variant="outline"
-            className="mb-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase text-primary border-primary/30 bg-primary/5"
+            className="badge-section mb-5"
           >
             The Meiosis Ecosystem
           </Badge>
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+          <h2 className="section-title">
             Everything Your Clinic Needs
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
+          <p className="section-description">
             Built from first principles for Indian healthcare — privacy-first,
             keyboard-fast, natively ABDM-compliant.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid-features">
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
@@ -100,16 +100,16 @@ export function FeaturesSection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              <Card className="h-full p-6 bg-card border-border hover:border-primary/30 hover:shadow-elevated transition-smooth group cursor-default">
+              <Card className="card-base h-full">
                 <div className="flex items-start gap-4">
                   <div
-                    className={`h-11 w-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-smooth ${feature.color}`}
+                    className={`feature-icon flex-shrink-0 ${feature.color}`}
                   >
                     <feature.icon className="h-5 w-5" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="font-display font-semibold text-foreground text-base">
+                    <div className="flex items-center gap-2 mb-3">
+                      <h3 className="font-display font-semibold text-foreground text-lg">
                         {feature.title}
                       </h3>
                       <Badge
@@ -119,7 +119,7 @@ export function FeaturesSection() {
                         {feature.badge}
                       </Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       {feature.description}
                     </p>
                   </div>

@@ -45,24 +45,24 @@ const features = [
 
 export function DocumentsSection() {
   return (
-    <section className="py-24 bg-background/80 backdrop-blur-xl border-t border-white/5">
+    <section className="section-wrapper bg-background/80 backdrop-blur-xl border-t border-white/5">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 36, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="section-header"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="section-title">
             Legally Compliant Documentation
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-description">
             Every type of medical document, perfectly formatted and fully compliant with legal and regulatory standards.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -71,19 +71,17 @@ export function DocumentsSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="p-6 h-full group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
-                <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-lg ${feature.color} transition-colors`}>
-                      <feature.icon className="w-6 h-6" />
-                    </div>
-                    <Badge variant="secondary" className="text-xs">
-                      {feature.badge}
-                    </Badge>
+              <Card className="card-base h-full flex flex-col">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className={`feature-icon ${feature.color}`}>
+                    <feature.icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground flex-1">{feature.description}</p>
+                  <Badge variant="secondary" className="text-xs">
+                    {feature.badge}
+                  </Badge>
                 </div>
+                <h3 className="font-display font-semibold text-foreground text-lg mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{feature.description}</p>
               </Card>
             </motion.div>
           ))}

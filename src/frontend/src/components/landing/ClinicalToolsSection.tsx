@@ -36,32 +36,32 @@ const clinicalTools = [
 
 export function ClinicalToolsSection() {
   return (
-    <section id="tools" className="py-24 bg-background/80 backdrop-blur-xl border-t border-white/5\">
+    <section id="tools" className="section-wrapper bg-background/80 backdrop-blur-xl border-t border-white/5">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 36, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="section-header"
         >
           <Badge
             variant="outline"
-            className="mb-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase text-primary border-primary/30 bg-primary/5"
+            className="badge-section mb-5"
           >
             Specialized Tools
           </Badge>
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+          <h2 className="section-title">
             Powerful Tools for{" "}
             <span className="text-gradient-primary">Modern Clinics</span>
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
+          <p className="section-description">
             Beyond the EMR core — specialized modules that handle every
             dimension of modern clinical practice.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
           {clinicalTools.map((tool, i) => (
             <motion.div
               key={tool.title}
@@ -74,9 +74,9 @@ export function ClinicalToolsSection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              <Card className="h-full p-6 bg-card border-border hover:border-primary/30 hover:shadow-elevated transition-smooth group">
+              <Card className="card-base h-full">
                 <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-smooth">
+                  <div className="h-12 w-12 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0 transition-smooth">
                     <tool.icon className="h-6 w-6 text-primary" />
                   </div>
                   <div>

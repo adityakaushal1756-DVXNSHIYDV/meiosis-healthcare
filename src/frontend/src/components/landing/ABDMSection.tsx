@@ -25,9 +25,9 @@ const abdmModules = [
 
 export function ABDMSection() {
   return (
-    <section id="abdm" className="py-24 bg-muted/30 backdrop-blur-xl border-t border-white/5">
+    <section id="abdm" className="section-wrapper bg-muted/30 backdrop-blur-xl border-t border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid-2-col items-center">
           {/* Left: Content */}
           <motion.div
             initial={{ opacity: 0, x: -40, scale: 0.97 }}
@@ -35,31 +35,31 @@ export function ABDMSection() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-6">
               <Badge
                 variant="outline"
-                className="px-3 py-1 text-xs font-semibold tracking-widest uppercase text-primary border-primary/30 bg-primary/5"
+                className="badge-section"
               >
                 National Interoperability
               </Badge>
-              <Badge className="bg-accent/10 text-accent border-accent/25 text-xs font-bold px-3 py-1">
+              <Badge className="bg-accent/10 text-accent border-accent/25 text-xs font-bold px-4 py-1.5">
                 ✦ ABDM Compliant
               </Badge>
             </div>
 
-            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
               Built for India's{" "}
               <span className="text-gradient-primary">Digital Health</span>{" "}
               Mission
             </h2>
-            <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Meiosis is fully aligned with the Ayushman Bharat Digital Mission
               (ABDM). From ABHA Health ID creation to nationwide longitudinal
               record access, we handle every touchpoint of India's national
               digital health infrastructure.
             </p>
 
-            <ul className="mt-8 space-y-3">
+            <ul className="space-y-4">
               {abdmFeatures.map((item, i) => (
                 <motion.li
                   key={item}
@@ -71,9 +71,9 @@ export function ABDMSection() {
                     duration: 0.45,
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
-                  className="flex items-center gap-3 text-sm text-foreground"
+                  className="flex items-center gap-3 text-base text-foreground"
                 >
-                  <CheckCircle2 className="h-4 w-4 text-accent flex-shrink-0" />
+                  <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
                   {item}
                 </motion.li>
               ))}

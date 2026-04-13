@@ -32,33 +32,33 @@ const privacyCards = [
 
 export function PrivacySection() {
   return (
-    <section id="privacy" className="py-24 bg-background/80 backdrop-blur-xl border-t border-white/5">
+    <section id="privacy" className="section-wrapper bg-background/80 backdrop-blur-xl border-t border-white/5">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 36, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="section-header"
         >
           <Badge
             variant="outline"
-            className="mb-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase text-primary border-primary/30 bg-primary/5"
+            className="badge-section mb-5"
           >
             Privacy & Sovereignty
           </Badge>
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+          <h2 className="section-title">
             Your Data. Your Clinic.{" "}
             <span className="text-gradient-primary">Your Control.</span>
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
+          <p className="section-description">
             Most SaaS EMRs own your patient data. Meiosis doesn't. Local-first
             architecture means patient records belong to your clinic — and your
             patients.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid-features max-w-5xl mx-auto">
           {privacyCards.map((card, i) => (
             <motion.div
               key={card.title}
@@ -71,11 +71,11 @@ export function PrivacySection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              <Card className="h-full p-6 bg-card border-border hover:border-primary/30 hover:shadow-elevated transition-smooth text-center flex flex-col items-center">
-                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
-                  <card.icon className="h-7 w-7 text-primary" />
+              <Card className="card-base h-full flex flex-col items-center text-center">
+                <div className="h-16 w-16 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
+                  <card.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="font-display font-semibold text-foreground text-lg mb-2">
+                <h3 className="font-display font-semibold text-foreground text-lg mb-3">
                   {card.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">

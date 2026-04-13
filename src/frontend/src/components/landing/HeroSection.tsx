@@ -67,7 +67,7 @@ export function HeroSection() {
               delay: 0.12,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="font-display text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.08]"
+            className="font-display text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05]"
           >
             <span className="text-gradient-primary">
               The Future of

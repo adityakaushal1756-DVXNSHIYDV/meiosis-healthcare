@@ -156,4 +156,53 @@
   .dark .glass-effect {
     background: oklch(var(--card) / 0.6);
   }
+
+  /* Modular Layout System */
+  .section-wrapper {
+    @apply py-32 lg:py-40;
+  }
+
+  .section-header {
+    @apply text-center max-w-3xl mx-auto mb-16 lg:mb-20;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] text-foreground;
+  }
+
+  .section-description {
+    @apply mt-5 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto;
+  }
+
+  .card-base {
+    @apply rounded-lg border border-border bg-card/50 backdrop-blur-sm p-6 md:p-8 transition-all duration-300 hover:bg-card/80 hover:shadow-subtle;
+  }
+
+  .card-base-glass {
+    @apply rounded-lg border border-white/5 bg-background/40 backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:bg-background/60 hover:shadow-subtle;
+  }
+
+  .grid-features {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10;
+  }
+
+  .grid-2-col {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12;
+  }
+
+  .cta-primary {
+    @apply px-8 py-3 font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors inline-flex items-center gap-2;
+  }
+
+  .cta-secondary {
+    @apply px-8 py-3 font-semibold rounded-lg border border-border bg-background hover:bg-muted transition-colors inline-flex items-center gap-2;
+  }
+
+  .badge-section {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide uppercase bg-primary/10 border border-primary/20 text-primary;
+  }
+
+  .feature-icon {
+    @apply w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/10 flex items-center justify-center text-primary p-2.5;
+  }
 }
