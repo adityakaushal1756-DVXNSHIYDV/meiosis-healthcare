@@ -34,150 +34,249 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 py-16 lg:py-24 relative z-10">
-        <div className="max-w-2xl">
-          {/* Currently Under Development tag */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mb-4"
-          >
-            <DevTag />
-          </motion.div>
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.9fr] items-center">
+          <div className="max-w-2xl">
+            {/* Currently Under Development tag */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="mb-4"
+            >
+              <DevTag />
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.06,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
-          >
-            <Badge className="mb-5 bg-accent/10 text-accent border-accent/25 font-semibold text-xs px-3.5 py-1.5 tracking-wide">
-              ✦ ABDM Certification Upcoming &nbsp;·&nbsp; SNOMED CT Integrated
-            </Badge>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.06,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+            >
+              <Badge className="mb-5 bg-accent/10 text-accent border-accent/25 font-semibold text-xs px-3.5 py-1.5 tracking-wide">
+                ✦ ABDM Certification Upcoming &nbsp;·&nbsp; SNOMED CT Integrated
+              </Badge>
+            </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 36, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{
-              duration: 0.75,
-              delay: 0.12,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
-            className="font-display text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.08]"
-          >
-            <span className="text-gradient-primary">
-              The Future of
+            <motion.h1
+              initial={{ opacity: 0, y: 36, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.75,
+                delay: 0.12,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              className="font-display text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.08]"
+            >
+              <span className="text-gradient-primary">
+                The Future of
+                <br />
+                Clinical Care
+              </span>
               <br />
-              Clinical Care
-            </span>
-            <br />
-            <span className="text-foreground">in India</span>
-          </motion.h1>
+              <span className="text-foreground">in India</span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            <motion.p
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.65,
+                delay: 0.22,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
+            >
+              Keyboard-efficient, local-first, and fully ABDM-aligned EMR built
+              for the speed and complexity of modern Indian clinics. See 40% more
+              patients without sacrificing care quality.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.55,
+                delay: 0.32,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              className="mt-8 flex flex-wrap gap-3"
+            >
+              <a
+                href={`${AUTH_URL}/signup`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-base px-7 shadow-elevated transition-smooth"
+                  data-ocid="hero-cta-primary"
+                >
+                  Get Started Free
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+              <a
+                href={`${AUTH_URL}/demo`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="font-semibold text-base px-7 border-border hover:border-primary/40 transition-smooth"
+                  data-ocid="hero-cta-demo"
+                >
+                  <Play className="mr-2 h-4 w-4" />
+                  Request Demo
+                </Button>
+              </a>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.44 }}
+              className="mt-3 text-xs text-muted-foreground"
+            >
+              Redirects to{" "}
+              <span className="font-mono text-primary/70">
+                meiosis-healthcare.vercel.app
+              </span>{" "}
+              · No credit card required
+            </motion.p>
+
+            {/* Stats Row — only kept non-count stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.5,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              className="mt-10 flex gap-3"
+            >
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 16, scale: 0.92 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.56 + i * 0.08,
+                    ease: [0.34, 1.56, 0.64, 1],
+                  }}
+                  className="text-center p-3 px-5 rounded-xl bg-card/70 backdrop-blur-sm border border-border/60"
+                >
+                  <div className="font-display text-xl font-bold text-primary">
+                    {stat.value}
+                  </div>
+                  <div className="text-[11px] text-muted-foreground mt-0.5 leading-tight">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
-              duration: 0.65,
-              delay: 0.22,
+              duration: 0.7,
+              delay: 0.2,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg"
+            className="hidden lg:block"
           >
-            Keyboard-efficient, local-first, and fully ABDM-aligned EMR built
-            for the speed and complexity of modern Indian clinics. See 40% more
-            patients without sacrificing care quality.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.55,
-              delay: 0.32,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
-            className="mt-8 flex flex-wrap gap-3"
-          >
-            <a
-              href={`${AUTH_URL}/signup`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-base px-7 shadow-elevated transition-smooth"
-                data-ocid="hero-cta-primary"
-              >
-                Get Started Free
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
-            <a
-              href={`${AUTH_URL}/demo`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="font-semibold text-base px-7 border-border hover:border-primary/40 transition-smooth"
-                data-ocid="hero-cta-demo"
-              >
-                <Play className="mr-2 h-4 w-4" />
-                Request Demo
-              </Button>
-            </a>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.44 }}
-            className="mt-3 text-xs text-muted-foreground"
-          >
-            Redirects to{" "}
-            <span className="font-mono text-primary/70">
-              meiosis-healthcare.vercel.app
-            </span>{" "}
-            · No credit card required
-          </motion.p>
-
-          {/* Stats Row — only kept non-count stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              delay: 0.5,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
-            className="mt-10 flex gap-3"
-          >
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 16, scale: 0.92 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  duration: 0.45,
-                  delay: 0.56 + i * 0.08,
-                  ease: [0.34, 1.56, 0.64, 1],
-                }}
-                className="text-center p-3 px-5 rounded-xl bg-card/70 backdrop-blur-sm border border-border/60"
-              >
-                <div className="font-display text-xl font-bold text-primary">
-                  {stat.value}
+            <div className="relative rounded-[2rem] border border-white/10 bg-slate-950/85 p-6 shadow-[0_40px_120px_rgba(15,23,42,0.45)] overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-accent/10" />
+              <div className="relative space-y-5">
+                <div className="flex items-center justify-between gap-4 rounded-3xl border border-border/60 bg-background/90 px-4 py-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                      Clinic cockpit
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-foreground">
+                      Live patient flow
+                    </p>
+                  </div>
+                  <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                    Active
+                  </span>
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5 leading-tight">
-                  {stat.label}
+
+                <div className="rounded-[2rem] border border-border/60 bg-card/95 p-5 shadow-sm">
+                  <div className="flex items-center justify-between mb-5">
+                    <div>
+                      <div className="h-2.5 w-16 rounded-full bg-primary/30 mb-2" />
+                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                        Today’s queue
+                      </p>
+                    </div>
+                    <span className="text-[11px] text-muted-foreground">08:42 AM</span>
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      { name: "Asha Patel", status: "Vitals recorded" },
+                      { name: "Rahul Mehta", status: "Lab order pending" },
+                      { name: "Nidhi Rao", status: "Ready for consult" },
+                    ].map((item) => (
+                      <div
+                        key={item.name}
+                        className="rounded-3xl border border-border/60 bg-background/80 p-4"
+                      >
+                        <div className="flex items-center justify-between gap-3">
+                          <div>
+                            <p className="font-semibold text-foreground">
+                              {item.name}
+                            </p>
+                            <p className="text-[11px] text-muted-foreground mt-1">
+                              {item.status}
+                            </p>
+                          </div>
+                          <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-semibold text-primary">
+                            {item.status === "Ready for consult" ? "Now" : "In queue"}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+
+                <div className="grid gap-3">
+                  <div className="rounded-3xl border border-border/60 bg-background/80 p-4 flex items-center justify-between">
+                    <div>
+                      <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                        Medication reminders
+                      </p>
+                      <p className="font-semibold text-foreground mt-1">
+                        14 active alerts
+                      </p>
+                    </div>
+                    <span className="rounded-full bg-accent/10 px-3 py-1 text-[10px] font-semibold text-accent">
+                      LLM
+                    </span>
+                  </div>
+                  <div className="rounded-3xl border border-border/60 bg-background/80 p-4 flex items-center justify-between">
+                    <div>
+                      <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                        Intercom alerts
+                      </p>
+                      <p className="font-semibold text-foreground mt-1">
+                        3 priority threads
+                      </p>
+                    </div>
+                    <span className="rounded-full bg-secondary/10 px-3 py-1 text-[10px] font-semibold text-secondary">
+                      HMS
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
